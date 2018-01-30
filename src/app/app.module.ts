@@ -5,6 +5,7 @@ import { MyApp } from './app.component';
 
 import { PagePage } from '../pages/page/page';
 import { SignupPage } from '../pages/signup/signup';
+import { LoginPage } from '../pages/login/login';
 
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -14,7 +15,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   declarations: [
     MyApp,
     PagePage,
-    SignupPage
+    SignupPage,
+    LoginPage
   ],
   imports: [
     BrowserModule,
@@ -24,7 +26,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   entryComponents: [
     MyApp,
     PagePage,
-    SignupPage
+    SignupPage,
+    LoginPage
   ],
   providers: [
     StatusBar,
