@@ -6,13 +6,48 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>Sign-up</ion-title>
+  <ion-navbar color = "auction">
+    <ion-title> Sign-up (สมัครสมาชิก) &nbsp;<ion-icon name="md-contacts"></ion-icon></ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding style="background:url(assets/img/bng.jpg) no-repeat center;background-size:cover;">
+<ion-list>
+  <ion-item>
+    <ion-label floating>Name : </ion-label>
+    <ion-input type="text"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label floating>ID Card : </ion-label>
+    <ion-input type="text"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label floating>Telephone : </ion-label>
+    <ion-input type="text"></ion-input>
+  </ion-item>
+  <ion-item>
+  <ion-label floating>Address : </ion-label>
+    <ion-input type="text"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label floating>Username : </ion-label>
+      <ion-input type="text"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label floating>Password : </ion-label>
+      <ion-input type="password"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label floating>Confirm Password : </ion-label>
+      <ion-input type="password"></ion-input>
+  </ion-item>
+</ion-list>
+  <div class="center">
+  <button ion-button round color ="dark">Save &nbsp;<ion-icon name="checkmark-circle"></ion-icon></button>
+  <button ion-button round color ="dark" (click)="Back()">Cancel &nbsp;<ion-icon name="backspace"></ion-icon></button>
+  </div>
+
 
 </ion-content>

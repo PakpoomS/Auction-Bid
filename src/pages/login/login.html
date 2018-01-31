@@ -6,13 +6,27 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>Login</ion-title>
-  </ion-navbar>
+ 
 
 </ion-header>
 
 
-<ion-content padding>
-
+<ion-content padding style="background:url(assets/img/bng.jpg) no-repeat center;background-size:cover;">
+  <br><br><br>
+  <img src="assets/img/Logo2.png" style="display:block;width:20%;height:;margin-left:auto;margin-right:auto;" />
+  <img src="assets/img/Logo.png" style="display:block;width:100%;height:auto;margin-left:auto;margin-right:auto;" />
+  <br><br>
+  <ion-item class ="item">
+    <ion-label color="light">Username :</ion-label>
+      <ion-input type="text"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label color = "light" >Password : </ion-label>
+      <ion-input type="password"></ion-input>
+  </ion-item>
+  <br><br>
+  <div class="center">
+  <button ion-button round color ="dark">OK&nbsp;<ion-icon name="md-return-left"></ion-icon></button>
+  <button ion-button round color ="dark" (click)="Back()">Cancel &nbsp;<ion-icon name="backspace"></ion-icon></button>
+  </div>
 </ion-content>

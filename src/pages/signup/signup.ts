@@ -21,5 +21,8 @@ export class SignupPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad SignupPage');
   }
+  Back(){
+    this.navCtrl.pop();
+  }
 
 }

@@ -21,5 +21,8 @@ export class LoginPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
   }
+  Back(){
+    this.navCtrl.pop();
+  }
 
 }
