@@ -16,7 +16,7 @@
 <ion-content padding style="background:url(assets/img/bng.jpg) no-repeat center;background-size:cover;">
 <ion-list>
   <ion-item class = "item">
-    <ion-label floating>Name : </ion-label>
+   <!-- <ion-label floating>Name : </ion-label>
     <ion-input type="text"></ion-input>
   </ion-item>
   <ion-item>
@@ -31,21 +31,21 @@
   <ion-label floating>Address : </ion-label>
     <ion-input type="text"></ion-input>
   </ion-item>
-  <ion-item>
-    <ion-label floating>Username : </ion-label>
-      <ion-input type="text"></ion-input>
+  <ion-item> -->
+    <ion-label floating>Email : </ion-label>
+      <ion-input type="text" [(ngModel)]="user.userid"></ion-input>
   </ion-item>
   <ion-item>
-    <ion-label floating>Password : </ion-label>
-      <ion-input type="password"></ion-input>
+    <ion-label floating>Password : (รหัสผ่าน 6 ตัวขึ้นไป)</ion-label>
+      <ion-input type="password" [(ngModel)]="user.pass"></ion-input>
   </ion-item>
   <ion-item>
-    <ion-label floating>Confirm Password : </ion-label>
-      <ion-input type="password"></ion-input>
+    <ion-label floating>Confirm Password : (กรอกรหัสซ้ำอีกครั้ง)</ion-label>
+      <ion-input type="password" [(ngModel)]="pass"></ion-input>
   </ion-item>
 </ion-list>
   <div class="center">
-  <button ion-button round color ="dark">Save &nbsp;<ion-icon name="checkmark-circle"></ion-icon></button>
+  <button ion-button round color ="dark"(click)="signup(user)">Save &nbsp;<ion-icon name="checkmark-circle"></ion-icon></button>
   <button ion-button round color ="dark" (click)="Back()">Cancel &nbsp;<ion-icon name="backspace"></ion-icon></button>
   </div>
 

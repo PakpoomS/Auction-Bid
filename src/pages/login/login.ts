@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { AngularFireAuth } from 'angularfire2/auth';
+import { Main1Page } from '../main1/main1';
+
+import { User } from "../../model/user";
 
 /**
  * Generated class for the LoginPage page.
@@ -15,7 +19,28 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class LoginPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  user = {} as User;
+
+  constructor(public navCtrl: NavController, 
+              public navParams: NavParams,
+              private afAuth: AngularFireAuth) {
+  }
+
+  async login(user: User){
+    try{
+     const result = await this.afAuth.auth.signInWithEmailAndPassword(user.userid,user.pass);
+     if(result){
+      this.navCtrl.push(Main1Page);
+      alert('ยินดีต้อนรับ');
+     }
+     else{
+      alert('รหัสผ่านไม่ถูกต้อง');
+     }
+      }
+     catch(e){
+       console.error(e);
+       alert('รหัสผ่านไม่ถูกต้อง');
+    }
   }
 
   ionViewDidLoad() {
