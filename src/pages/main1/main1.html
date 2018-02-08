@@ -6,15 +6,15 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>Auction Bid</ion-title>
+  <ion-navbar color = "dark">
+    <ion-title>Welcome to Auction Bid : {{( profileData | async)?.name}}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding style="background-color:#396E60;">
 
-  <p>Welcome : {{( profileData | async)?.name}}</p>
+  
 
 </ion-content>

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { AngularFireDatabase } from 'angularfire2/database';
+import { AngularFireDatabase } from 'angularfire2/database-deprecated';
 import { Main1Page } from '../main1/main1';
 
 import { Profile } from '../../model/user';
@@ -30,7 +30,7 @@ export class Signup2Page {
   saveProfile(){
     this.afAuth.authState.take(1).subscribe(auth =>{
         this.afData.object(`profile/${auth.uid}`).set(this.profile)
-        .then(() =>this.navCtrl.push(Main1Page));
+        .then(() =>this.navCtrl.setRoot(Main1Page));
     })
   }
   

@@ -33,9 +33,9 @@ export class SignupPage {
   async signup(user:User){
      try{
       if(user.pass == this.pass ){
-      const result = await this.afAuth.auth.createUserWithEmailAndPassword(user.userid,user.pass)
-      .then(() => this.afAuth.auth.signInWithEmailAndPassword(user.userid,user.pass));
+      const result = await this.afAuth.auth.createUserWithEmailAndPassword(user.userid,user.pass);
       console.log(result);
+      this.afAuth.auth.signInWithEmailAndPassword(user.userid,user.pass);
       alert('สมัครสมาชิกเรียบร้อย');
       this.navCtrl.push(Signup2Page);
     }else{

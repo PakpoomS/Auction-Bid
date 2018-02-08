@@ -30,7 +30,7 @@ export class LoginPage {
     try{
      const result = await this.afAuth.auth.signInWithEmailAndPassword(user.userid,user.pass);
      if(result){
-      this.navCtrl.push(Main1Page);
+      this.navCtrl.setRoot(Main1Page);
       alert('ยินดีต้อนรับ');
      }
      else{

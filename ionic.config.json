@@ -1,6 +1,6 @@
 {
   "name": "auction_bid",
-  "app_id": "",
+  "app_id": "c7c7337c",
   "type": "ionic-angular",
   "integrations": {
     "cordova": {}

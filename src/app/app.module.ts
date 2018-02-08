@@ -28,6 +28,7 @@ import { Signup2Page} from '../pages/signup2/signup2';
 //API Device
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { ToastController } from 'ionic-angular';
 
 
 @NgModule({
