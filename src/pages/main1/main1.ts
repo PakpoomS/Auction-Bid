@@ -4,6 +4,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase, FirebaseObjectObservable } from 'angularfire2/database-deprecated';
 import { Profile } from '../../model/user';
 import { ToastController } from 'ionic-angular/components/toast/toast-controller';
+import { PagePage} from '../page/page';
 
 /**
  * Generated class for the Main1Page page.
@@ -43,6 +44,13 @@ export class Main1Page {
         console.log('error')
       }
   })
-
   }
+  
+  signout(){
+      if(confirm('คุณต้องการออกจากระบบหรือไม่ ?')){
+        this.afAuth.auth.signOut();
+        this.navCtrl.setRoot(PagePage);
+      }
+  }
+
 }

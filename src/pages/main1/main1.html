@@ -5,16 +5,41 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
   <ion-navbar color = "dark">
-    <ion-title>Welcome to Auction Bid : {{( profileData | async)?.name}}</ion-title>
+      
+    <ion-title>Auction Bid</ion-title>
+    
+    <ion-buttons right icon-only>
+      <button ion-button (click) ="signout()">logout<ion-icon name="close-circle"></ion-icon></button>
+    </ion-buttons>
+
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding style="background-color:#396E60;">
+   
 
+   <ion-item>
+      <ion-label>ยินดีต้อนรับ : {{( profileData | async)?.name}}</ion-label>
+    </ion-item>
   
+    <ion-card class="dev">
+        <img src="assets/img/auction.png"/>
+        <div class="card-title">ประมูลสินค้า</div>
+      </ion-card>
+    
+      <ion-card class="dev">
+        <img src="assets/img/tag.png"/>
+        <div class="card-title">วางประมูลสินค้า</div>
+      </ion-card>
+    
+      <ion-card class="dev">
+        <img src="assets/img/manager.png"/>
+        <div class="card-title">แก้ไขข้อมูลส่วนบุคคล</div>
+      </ion-card>
+    
+   
 
 </ion-content>
