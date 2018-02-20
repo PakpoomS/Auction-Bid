@@ -6,6 +6,8 @@ import { Profile } from '../../model/user';
 import { ToastController } from 'ionic-angular/components/toast/toast-controller';
 import { PagePage} from '../page/page';
 import { ModifyUserPage } from'../modify-user/modify-user';
+import { MainBidPage } from '../main-bid/main-bid';
+import { MainSellPage } from '../main-sell/main-sell';
 
 /**
  * Generated class for the Main1Page page.
@@ -54,6 +56,14 @@ export class Main1Page {
         localStorage.removeItem('token');
       }
   }
+
+  gotoBid(){
+    this.navCtrl.push(MainBidPage);
+  }
+  gotoSell(){
+    this.navCtrl.push(MainSellPage);
+  }
+  
   gotoModify(){
     this.navCtrl.push(ModifyUserPage);
   }

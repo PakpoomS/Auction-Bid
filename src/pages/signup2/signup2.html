@@ -14,7 +14,14 @@
 
 
 <ion-content padding style="background-color:#396E60;background-size:cover;">
-<ion-list>
+  <button ion-button color ="primary" (click)="takePhoto()">ถ่ายรูปประจำตัว</button>
+  <br>
+  
+  <ion-card *ngIf= "profile.Img">
+      <img [src] = "profile.Img">
+  </ion-card>
+
+  <ion-list>
   <ion-item class = "item">
    <ion-label floating>Name : </ion-label>
     <ion-input type="text" [(ngModel)]="profile.name"></ion-input>

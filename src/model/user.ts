@@ -8,5 +8,6 @@ export interface Profile{
     card : string;
     phone : string;
     address: string;
+    Img : any;
 
 }

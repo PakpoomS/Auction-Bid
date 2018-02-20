@@ -15,6 +15,11 @@
 
 <ion-content padding style="background-color:#396E60;background-size:cover;">
   
+  <button ion-button color ="primary" (click)="takePhoto()">ถ่ายรูปประจำตัว</button>
+  <ion-card *ngIf= "(dbServer | async)?.Img">
+        <img [src] = "(dbServer | async)?.Img">
+  </ion-card>
+
   <ion-item>
     <ion-label floating>Name : </ion-label>
     <ion-input #name [ngModel]="(dbServer | async)?.name"></ion-input>
@@ -32,6 +37,6 @@
       <ion-input #phone [ngModel]="(dbServer | async)?.phone"></ion-input>
  </ion-item>
   <br>
- <button ion-button round color ="dark" (click)="save({name : name.value,address : address.value,card : card.value,phone : phone.value})">Save&nbsp;<ion-icon name="checkmark-circle-outline"></ion-icon></button>
+ <button ion-button round color ="dark" (click)="save({name : name.value,address : address.value,card : card.value,phone : phone.value , img : profile.img})">Save&nbsp;<ion-icon name="checkmark-circle-outline"></ion-icon></button>
 
 </ion-content>
