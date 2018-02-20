@@ -20,7 +20,7 @@ import { User } from "../../model/user";
 export class SignupPage {
 
   user = {} as User;
-  private pass;
+  public pass;
 
   constructor(public navCtrl: NavController, 
               public navParams: NavParams , 

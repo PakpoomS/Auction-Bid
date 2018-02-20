@@ -5,6 +5,7 @@ import { AngularFireDatabase, FirebaseObjectObservable } from 'angularfire2/data
 import { Profile } from '../../model/user';
 import { ToastController } from 'ionic-angular/components/toast/toast-controller';
 import { PagePage} from '../page/page';
+import { ModifyUserPage } from'../modify-user/modify-user';
 
 /**
  * Generated class for the Main1Page page.
@@ -51,6 +52,9 @@ export class Main1Page {
         this.afAuth.auth.signOut();
         this.navCtrl.setRoot(PagePage);
       }
+  }
+  gotoModify(){
+    this.navCtrl.push(ModifyUserPage);
   }
 
 }

@@ -24,6 +24,7 @@ import { SignupPage } from '../pages/signup/signup';
 import { LoginPage } from '../pages/login/login';
 import { Main1Page } from '../pages/main1/main1';
 import { Signup2Page} from '../pages/signup2/signup2';
+import { ModifyUserPage } from '../pages/modify-user/modify-user';
 
 //API Device
 import { StatusBar } from '@ionic-native/status-bar';
@@ -36,7 +37,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     SignupPage,
     LoginPage,
     Main1Page,
-    Signup2Page
+    Signup2Page,
+    ModifyUserPage
   ],
   imports: [
     BrowserModule,
@@ -52,7 +54,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     SignupPage,
     LoginPage,
     Main1Page,
-    Signup2Page
+    Signup2Page,
+    ModifyUserPage
   ],
   providers: [
     StatusBar,

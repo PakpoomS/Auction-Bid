@@ -1,0 +1,37 @@
+<!--
+  Generated template for the ModifyUserPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color = "dark">
+    <ion-title>แก้ไขข้อมูลส่วนบุคคล <ion-icon name="clipboard"></ion-icon></ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding style="background-color:#396E60;background-size:cover;">
+  
+  <ion-item>
+    <ion-label floating>Name : </ion-label>
+    <ion-input #name [ngModel]="(dbServer | async)?.name"></ion-input>
+  </ion-item>
+  <ion-item>
+  <ion-label floating>Address : </ion-label>
+    <ion-input #address [ngModel]="(dbServer | async)?.address"></ion-input>
+  </ion-item>
+  <ion-item>
+  <ion-label floating>Card : </ion-label>
+      <ion-input #card [ngModel]="(dbServer | async)?.card"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label floating>Phone : </ion-label>
+      <ion-input #phone [ngModel]="(dbServer | async)?.phone"></ion-input>
+ </ion-item>
+  <br>
+ <button ion-button round color ="dark" (click)="save({name : name.value,address : address.value,card : card.value,phone : phone.value})">Save&nbsp;<ion-icon name="checkmark-circle-outline"></ion-icon></button>
+
+</ion-content>
