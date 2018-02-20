@@ -51,6 +51,7 @@ export class Main1Page {
       if(confirm('คุณต้องการออกจากระบบหรือไม่ ?')){
         this.afAuth.auth.signOut();
         this.navCtrl.setRoot(PagePage);
+        localStorage.removeItem('token');
       }
   }
   gotoModify(){

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, App } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Main1Page } from '../main1/main1';
 
@@ -20,16 +20,19 @@ import { User } from "../../model/user";
 export class LoginPage {
 
   user = {} as User;
+  public token:string;
 
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
-              private afAuth: AngularFireAuth) {
+              private afAuth: AngularFireAuth,
+              private app : App) {
   }
 
   async login(user: User){
     try{
      const result = await this.afAuth.auth.signInWithEmailAndPassword(user.userid,user.pass);
      if(result){
+      localStorage.setItem('token', this.token);
       this.navCtrl.setRoot(Main1Page);
       alert('ยินดีต้อนรับ');
      }

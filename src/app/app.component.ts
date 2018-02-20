@@ -14,7 +14,7 @@ import { Main1Page } from '../pages/main1/main1';
 })
 export class MyApp {
     
-    rootPage:any = PagePage;
+    rootPage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {
@@ -22,6 +22,9 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
       splashScreen.hide();
+      let token = localStorage.getItem('token');
+      if (token) this.rootPage = Main1Page;
+      else this.rootPage = PagePage;
     });
   }
   

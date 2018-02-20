@@ -20,6 +20,7 @@ import { Profile } from '../../model/user';
 export class Signup2Page {
 
   profile = {} as Profile;
+  public token :string;
 
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
@@ -31,6 +32,7 @@ export class Signup2Page {
     this.afAuth.authState.take(1).subscribe(auth =>{
         this.afData.object(`profile/${auth.uid}`).set(this.profile)
         .then(() =>this.navCtrl.setRoot(Main1Page));
+        localStorage.setItem('token',this.token)
     })
   }
   
