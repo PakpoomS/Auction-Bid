@@ -22,7 +22,7 @@ export class ModifyUserPage {
 
   profileData : FirebaseObjectObservable<Profile>
 
-  public profile
+  profile = {} as Profile;
   public dbServer;
 
   constructor(
@@ -74,6 +74,10 @@ export class ModifyUserPage {
     this.dbServer.update(profiledata);
     this.navCtrl.pop();
     alert('บันทึกเรียบร้อย')
+  }
+  updatePhoto(profiledata : any){
+    this.dbServer.update(profiledata);
+    alert('บันทึกรูปเรียบร้อย')
   }
 }
 

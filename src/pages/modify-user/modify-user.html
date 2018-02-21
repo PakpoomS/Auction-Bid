@@ -15,11 +15,23 @@
 
 <ion-content padding style="background-color:#396E60;background-size:cover;">
   
-  <button ion-button color ="primary" (click)="takePhoto()">ถ่ายรูปประจำตัว</button>
-  <ion-card *ngIf= "(dbServer | async)?.Img">
-        <img [src] = "(dbServer | async)?.Img">
+  
+
+  <ion-title color= "dark">Photo</ion-title>
+  
+  <ion-card style="width : 200px; height: 200px" *ngIf= "(dbServer | async)?.Img">
+  <img [src] = "(dbServer | async)?.Img">
   </ion-card>
 
+  
+  <ion-title color= "dark" *ngIf="profile.Img">New Photo</ion-title>
+  <ion-card style="width : 200px; height: 200px" *ngIf= "profile.Img">
+  <img [src] = "profile.Img">
+  
+  </ion-card>
+  <button *ngIf="profile.Img" ion-button round color ="dark" (click)="updatePhoto({Img : profile.Img})">บันทึกรูปภาพ&nbsp;<ion-icon name="checkmark-circle-outline"></ion-icon></button>
+  <button ion-button color ="dark" (click)="takePhoto()">Camera&nbsp;<ion-icon name="camera"></ion-icon></button>
+  <button ion-button color ="dark" (click)="takePhotoAlbum()">Album&nbsp; <ion-icon name="albums"></ion-icon></button>
   <ion-item>
     <ion-label floating>Name : </ion-label>
     <ion-input #name [ngModel]="(dbServer | async)?.name"></ion-input>
@@ -37,6 +49,6 @@
       <ion-input #phone [ngModel]="(dbServer | async)?.phone"></ion-input>
  </ion-item>
   <br>
- <button ion-button round color ="dark" (click)="save({name : name.value,address : address.value,card : card.value,phone : phone.value , img : profile.img})">Save&nbsp;<ion-icon name="checkmark-circle-outline"></ion-icon></button>
-
+ <button ion-button round color ="dark" (click)="save({name : name.value,address : address.value,card : card.value,phone : phone.value })">บันทึกข้อมูล&nbsp;<ion-icon name="checkmark-circle-outline"></ion-icon></button>
+ 
 </ion-content>
