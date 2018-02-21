@@ -43,8 +43,8 @@ export class SignupPage {
     }
       }
       catch(e){
-      alert('การสมัครสมาชิกรูปแบบไม่ถูกต้อง')
-        console.error(e);
+      alert('รูปแบบการสมัครไม่ถูกต้องหรือ Email ซ้ำ')
+      console.error(e);
       }
   }
   Back(){

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, App } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController} from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Main1Page } from '../main1/main1';
 
@@ -24,7 +24,8 @@ export class LoginPage {
 
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
-              private afAuth: AngularFireAuth) {
+              private afAuth: AngularFireAuth,
+              private alertCtrl : AlertController) {
   }
 
   async login(user: User){
@@ -50,6 +51,41 @@ export class LoginPage {
   }
   Back(){
     this.navCtrl.pop();
+  }
+  
+  forGot(){
+    let alert2 = this.alertCtrl.create({
+      title : 'Email ถูกส่งเรียบร้อย',
+      buttons : ['OK']
+  });
+    let alert = this.alertCtrl.create({
+      title : 'กรุณากรอก Email เพื่อส่ง Reset Password',
+      inputs:[
+          {
+          name: 'email',
+          placeholder : 'Email'
+          }
+      ],
+      buttons:[
+        {
+        text : 'ยกเลิก',
+        role: 'cancel',
+        handler : data =>{
+          console.log ('canel');
+        }
+        },
+        {
+        text : 'ตกลง',
+        handler: data =>{
+          this.afAuth.auth.sendPasswordResetEmail(data.email);
+          alert2.present();
+        } 
+      }
+      
+      ]
+    });
+    alert.present();
+    
   }
 
 }

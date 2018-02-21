@@ -24,6 +24,8 @@ export class ModifyUserPage {
 
   profile = {} as Profile;
   public dbServer;
+  public pass;
+  public pass2;
 
   constructor(
     public navCtrl: NavController, 
@@ -79,5 +81,17 @@ export class ModifyUserPage {
     this.dbServer.update(profiledata);
     alert('บันทึกรูปเรียบร้อย')
   }
+  changePass(){
+    if(this.pass == this.pass2){
+    try{
+    this.afAuth.auth.currentUser.updatePassword(this.pass)
+    alert('เปลี่ยนพาสเวิร์ดเรียบร้อย')
+    }catch(error){
+      alert('กรุณา Login ใหม่อีกครั้ง')
+    }
+  }else{
+    alert('รหัสผ่านไม่ตรงกัน')
+  }
+ }
 }
 

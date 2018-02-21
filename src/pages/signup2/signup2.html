@@ -14,11 +14,12 @@
 
 
 <ion-content padding style="background-color:#396E60;background-size:cover;">
-  <button ion-button color ="primary" (click)="takePhoto()">ถ่ายรูปประจำตัว</button>
   <br>
-  
-  <ion-card *ngIf= "profile.Img">
-      <img [src] = "profile.Img">
+  <button ion-button color ="dark" (click)="takePhoto()">Camera&nbsp;<ion-icon name="camera"></ion-icon></button>
+  <button ion-button color ="dark" (click)="takePhotoAlbum()">Album&nbsp; <ion-icon name="albums"></ion-icon></button>
+  <br>
+  <ion-card style="width : 200px; height: 200px" *ngIf= "profile.Img">
+    <img [src] = "profile.Img">
   </ion-card>
 
   <ion-list>
