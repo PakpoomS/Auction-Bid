@@ -49,9 +49,8 @@
       <ion-input #phone [ngModel]="(dbServer | async)?.phone"></ion-input>
  </ion-item>
 
- <button ion-button round color ="dark" (click)="save({name : name.value,address : address.value,card : card.value,phone : phone.value })">บันทึกข้อมูล&nbsp;<ion-icon name="checkmark-circle-outline"></ion-icon></button>
+ <button ion-button full color ="dark" (click)="save({name : name.value,address : address.value,card : card.value,phone : phone.value })">บันทึกข้อมูล&nbsp;<ion-icon name="checkmark-circle-outline"></ion-icon></button>
   <br>
- <br>
  <ion-item>
     <ion-label >Password : </ion-label>
     <ion-input type="password" [(ngModel)]="pass"></ion-input>
@@ -61,5 +60,5 @@
       <ion-input type="password" [(ngModel)]="pass2"></ion-input>
   </ion-item>
   <br>
-  <button ion-button round color ="dark" (click)="changePass()">เปลี่ยนแปลงพาสเวิร์ด &nbsp; <ion-icon name="build"></ion-icon></button>
+  <button ion-button full color ="dark" (click)="changePass()">เปลี่ยนแปลงพาสเวิร์ด &nbsp; <ion-icon name="build"></ion-icon></button>
 </ion-content>

@@ -27,6 +27,7 @@ import { Signup2Page} from '../pages/signup2/signup2';
 import { ModifyUserPage } from '../pages/modify-user/modify-user';
 import { MainBidPage } from '../pages/main-bid/main-bid';
 import { MainSellPage } from '../pages/main-sell/main-sell';
+import { AddItemPage } from '../pages/add-item/add-item';
 
 
 //API Device
@@ -44,11 +45,18 @@ import { Camera } from'@ionic-native/camera';
     Signup2Page,
     ModifyUserPage,
     MainBidPage,
-    MainSellPage
+    MainSellPage,
+    AddItemPage
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp,{
+      platform:{
+        ios:{
+          StatusBarPadding:true
+        }
+      }
+    }),
     AngularFireModule.initializeApp(config),
     AngularFireAuthModule,
     AngularFireDatabaseModule
@@ -63,7 +71,8 @@ import { Camera } from'@ionic-native/camera';
     Signup2Page,
     ModifyUserPage,
     MainBidPage,
-    MainSellPage
+    MainSellPage,
+    AddItemPage
   ],
   providers: [
     StatusBar,

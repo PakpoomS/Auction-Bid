@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { AddItemPage } from '../add-item/add-item';
+import { Item } from '../../model/user';
 
 /**
- * Generated class for the MainSellPage page.
+ * Generated class for the AddItemPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -11,18 +11,17 @@ import { AddItemPage } from '../add-item/add-item';
 
 @IonicPage()
 @Component({
-  selector: 'page-main-sell',
-  templateUrl: 'main-sell.html',
+  selector: 'page-add-item',
+  templateUrl: 'add-item.html',
 })
-export class MainSellPage {
-
+export class AddItemPage {
+  Item = {} as Item;
+  
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
-  goToAdd(){
-    this.navCtrl.push(AddItemPage);
-  }
+
   ionViewDidLoad() {
-    console.log('ionViewDidLoad MainSellPage');
+    console.log('ionViewDidLoad AddItemPage');
   }
 
 }

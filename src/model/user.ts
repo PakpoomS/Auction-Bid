@@ -9,5 +9,16 @@ export interface Profile{
     phone : string;
     address: string;
     Img : any;
+}
+
+export interface Item{
+    name : string;
+    des : string;
+    sort : string;
+    price: any;
+    time : any;
+    UID : any;
+    Img : any;
 
 }
+
