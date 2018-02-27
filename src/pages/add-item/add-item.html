@@ -14,19 +14,34 @@
 
 
 <ion-content padding style="background-color:#396E60;background-size:cover;">
+  <ion-title color= "dark">รูปภาพของสินค้า</ion-title>
+  
+  <ion-grid>
+    <ion-row>
+        <ion-col col-6 *ngFor="let item of imgA ; let id = index">
+        <ion-card class="block">
+                <ion-icon  ios="ios-add-circle" md="md-add-circle"class="deleteIcon" (click)="deletePhoto(id)"></ion-icon>
+            <img [src]="item" imageViewer>
+        </ion-card>
+        </ion-col>
+    </ion-row>
+</ion-grid>
+
+  <button ion-button color ="dark" (click)="takePhoto()">Camera&nbsp;<ion-icon name="camera"></ion-icon></button>
+  <button ion-button color ="dark" (click)="takePhotoAlbum()">Album&nbsp; <ion-icon name="albums"></ion-icon></button>  
   <ion-item>
       <ion-label floating>ชื่อสินค้า :</ion-label>
-      <ion-input></ion-input>
+      <ion-input type ="text"[(ngModel)]="Item.name"></ion-input>
   </ion-item>
   
   <ion-item>
       <ion-label floating>ข้อมูลทั่วไปสินค้า :</ion-label>
-      <ion-input></ion-input>
+      <ion-input type ="text"[(ngModel)]="Item.des"></ion-input>
   </ion-item>
   
   <ion-item>
       <ion-label>ประเภทของสินค้า</ion-label>
-      <ion-select> 
+      <ion-select type="text" [(ngModel)]= "Item.sort"> 
         <ion-option  value = "ทั่วไป/เครื่องใช้ไฟฟ้า">ทั่วไป/เครื่องใช้ไฟฟ้า</ion-option>
         <ion-option  value = "ของเล่น">ของเล่น</ion-option>
         <ion-option  value = "ของเก่า/หมวดของสะสม">ของเก่า</ion-option>
@@ -36,14 +51,14 @@
 
   <ion-item>
       <ion-label floating>เปิดประมูลที่ : THB</ion-label>
-      <ion-input></ion-input>
+      <ion-input type="number" [(ngModel)]= "Item.price" ></ion-input>
   </ion-item>
 
   <ion-item>
       <ion-label floating>นับเวลาถอยหลัง : SEC</ion-label>
-      <ion-input></ion-input>
+      <ion-input type="number" [(ngModel)]= "Item.time" ></ion-input>
   </ion-item>
   <br>
-  <button ion-button full color ="dark" >บันทึก &nbsp; <ion-icon name="build"></ion-icon></button>
+  <button ion-button full color ="dark" (click)="save()">บันทึก &nbsp; <ion-icon name="build"></ion-icon></button>
 
 </ion-content>

@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, AlertController} from 'ionic-angul
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Main1Page } from '../main1/main1';
 
+
 import { User } from "../../model/user";
 
 /**
@@ -47,7 +48,7 @@ export class LoginPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
+    
   }
   Back(){
     this.navCtrl.pop();

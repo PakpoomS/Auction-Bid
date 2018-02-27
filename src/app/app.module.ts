@@ -34,6 +34,8 @@ import { AddItemPage } from '../pages/add-item/add-item';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Camera } from'@ionic-native/camera';
+import { IonicImageViewerModule } from 'ionic-img-viewer';
+import { Network } from '@ionic-native/network';
 
 @NgModule({
   declarations: [
@@ -59,7 +61,8 @@ import { Camera } from'@ionic-native/camera';
     }),
     AngularFireModule.initializeApp(config),
     AngularFireAuthModule,
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    IonicImageViewerModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -78,7 +81,8 @@ import { Camera } from'@ionic-native/camera';
     StatusBar,
     SplashScreen,
     Camera,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    Network
   ]
 })
 export class AppModule {}

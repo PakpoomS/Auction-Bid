@@ -14,5 +14,10 @@
 
 
 <ion-content padding style="background-color:#396E60;background-size:cover;">
-
+    
+      <ion-card *ngFor="let item of dbServer | async" >
+       ชื่อสินค้า : {{item.name}} <br>
+       ข้อมูลทั่วไปสินค้า : {{item.des}} <br>
+     </ion-card>
+      
 </ion-content>

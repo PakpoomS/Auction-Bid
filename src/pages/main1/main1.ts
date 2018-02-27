@@ -9,6 +9,7 @@ import { ModifyUserPage } from'../modify-user/modify-user';
 import { MainBidPage } from '../main-bid/main-bid';
 import { MainSellPage } from '../main-sell/main-sell';
 
+
 /**
  * Generated class for the Main1Page page.
  *

@@ -18,7 +18,5 @@ export interface Item{
     price: any;
     time : any;
     UID : any;
-    Img : any;
-
 }
 
