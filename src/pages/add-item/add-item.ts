@@ -32,6 +32,12 @@ export class AddItemPage {
 
   ionViewDidLoad() {
     this.imgA = [];
+    this.afAuth.authState.subscribe(auth=>{
+    this.afData.object(`profile/${auth.uid}`).subscribe(data =>{
+      this.Item.nameS = data.name;
+      console.log(this.Item.nameS)
+    })
+  })
   }
   
   takePhoto(){
@@ -68,9 +74,9 @@ export class AddItemPage {
   }
   
   save(){
-    this.afAuth.authState.take(1).subscribe(auth=>{
+    this.afAuth.authState.subscribe(auth=>{
       this.Item.UID = auth.uid;
-      this.afData.list('/item/').push(this.Item).push(this.imgA)
+      this.afData.list('/item/').push(this.Item).ref.child('/img').set(['test1','test2'])
       alert('บันทึกเรียบร้อย')
     }),(err) =>{
       console.log(err)

@@ -18,5 +18,6 @@ export interface Item{
     price: any;
     time : any;
     UID : any;
+    nameS : any;
 }
 

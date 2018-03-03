@@ -22,7 +22,8 @@ export class MainBidPage {
   user = {} as User;
   item = {} as Item;
   public dbServer ;
-  public allServer ;
+  public dbimgServer ;
+  public test;
 
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
@@ -30,7 +31,7 @@ export class MainBidPage {
   }
 
   ionViewDidLoad(){
-    this.dbServer = this.afData.list('/item/')
+    this.dbServer = this.afData.list('/item')
   }
-
 }
+  

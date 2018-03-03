@@ -15,9 +15,11 @@
 
 <ion-content padding style="background-color:#396E60;background-size:cover;">
     
-      <ion-card *ngFor="let item of dbServer | async" >
+      <ion-card *ngFor="let item of dbServer | async ; let i = index" >
        ชื่อสินค้า : {{item.name}} <br>
        ข้อมูลทั่วไปสินค้า : {{item.des}} <br>
+       ผู้เปิดประมูล : {{item.nameS}} <br>
+      <ion-card style="width : 200px; height: 200px "><div *ngIf="item.img[0] !=null"><img src ={{item.img[0]}}></div></ion-card>
      </ion-card>
       
 </ion-content>
