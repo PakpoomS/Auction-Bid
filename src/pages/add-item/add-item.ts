@@ -76,7 +76,7 @@ export class AddItemPage {
   save(){
     this.afAuth.authState.subscribe(auth=>{
       this.Item.UID = auth.uid;
-      this.afData.list('/item/').push(this.Item).ref.child('/img').set(['test1','test2'])
+      this.afData.list('/item/').push(this.Item).ref.child('/img').set(this.imgA)
       alert('บันทึกเรียบร้อย')
     }),(err) =>{
       console.log(err)
