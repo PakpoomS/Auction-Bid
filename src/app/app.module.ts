@@ -1,12 +1,14 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
+import { IonicApp, IonicModule, IonicErrorHandler, LoadingController } from 'ionic-angular';
 import { MyApp } from './app.component';
 
 //server
 import { AngularFireModule} from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule, } from 'angularfire2/database-deprecated';
+import firebase from 'firebase';
+import { Facebook } from '@ionic-native/facebook';
 
 
 var config = {

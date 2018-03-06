@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController} from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController , LoadingController} from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Main1Page } from '../main1/main1';
 
@@ -26,18 +26,25 @@ export class LoginPage {
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
               private afAuth: AngularFireAuth,
-              private alertCtrl : AlertController) {
+              private alertCtrl : AlertController,
+              private loading : LoadingController) {
   }
 
   async login(user: User){
     try{
+      let loading = this.loading.create({
+        content : 'กรุณารอซักครู่ ..'
+      });
+      loading.present();
      const result = await this.afAuth.auth.signInWithEmailAndPassword(user.userid,user.pass);
      if(result){
       localStorage.setItem('token', this.token);
       this.navCtrl.setRoot(Main1Page);
-      alert('ยินดีต้อนรับ');
+      loading.dismiss();
+      alert('ยินดีต้อนรับสู่ Auction-Bid');
      }
      else{
+      loading.dismiss();
       alert('รหัสผ่านไม่ถูกต้อง');
      }
       }

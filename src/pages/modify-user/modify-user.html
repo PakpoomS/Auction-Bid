@@ -20,13 +20,13 @@
   <ion-title color= "dark">Photo</ion-title>
   
   <ion-card style="width : 200px; height: 200px" *ngIf= "(dbServer | async)?.Img">
-  <img [src] = "(dbServer | async)?.Img">
+  <img [src] = "(dbServer | async)?.Img" imageviewer>
   </ion-card>
 
   
   <ion-title color= "dark" *ngIf="profile.Img">New Photo</ion-title>
   <ion-card style="width : 200px; height: 200px" *ngIf= "profile.Img">
-  <img [src] = "profile.Img">
+  <img [src] = "profile.Img" imageviewer>
   
   </ion-card>
   <button *ngIf="profile.Img" ion-button round color ="dark" (click)="updatePhoto({Img : profile.Img})">บันทึกรูปภาพ&nbsp;<ion-icon name="checkmark-circle-outline"></ion-icon></button>
