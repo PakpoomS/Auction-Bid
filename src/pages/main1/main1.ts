@@ -26,6 +26,9 @@ export class Main1Page {
  
   profileData : FirebaseObjectObservable<Profile>
 
+
+  profile = {} as Profile;
+
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
     private afAuth : AngularFireAuth,
