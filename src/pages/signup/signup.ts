@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,LoadingController } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { Signup2Page } from '../signup2/signup2';
 
@@ -24,7 +24,8 @@ export class SignupPage {
 
   constructor(public navCtrl: NavController, 
               public navParams: NavParams , 
-              private afAuth: AngularFireAuth) {
+              private afAuth: AngularFireAuth,
+              private loading: LoadingController) {
   }
 
   ionViewDidLoad() {
@@ -32,19 +33,26 @@ export class SignupPage {
   }
   async signup(user:User){
      try{
+      var loading = this.loading.create({
+        content : 'กรุณารอซักครู่ ..'
+      });
+      loading.present();
       if(user.pass == this.pass ){
       const result = await this.afAuth.auth.createUserWithEmailAndPassword(user.userid,user.pass);
       console.log(result);
       this.afAuth.auth.signInWithEmailAndPassword(user.userid,user.pass);
       alert('สมัครสมาชิกเรียบร้อย');
+      loading.dismiss();
       this.navCtrl.push(Signup2Page);
     }else{
       alert('รหัสผ่านไม่ตรงกัน');
+      loading.dismiss();
     }
       }
       catch(e){
       alert('รูปแบบการสมัครไม่ถูกต้องหรือ Email ซ้ำ')
       console.error(e);
+      loading.dismiss();
       }
   }
   Back(){

@@ -78,7 +78,9 @@ export class AddItemPage {
       this.Item.UID = auth.uid;
       this.afData.list('/item/').push(this.Item).ref.child('/img').set(this.imgA)
       alert('บันทึกเรียบร้อย')
+      this.navCtrl.pop();
     }),(err) =>{
+      alert('การบันทึกมีปัญหากรุณาลองใหม่อีกครั้ง')
       console.log(err)
     }
   }

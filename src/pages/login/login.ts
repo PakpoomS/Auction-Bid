@@ -32,7 +32,7 @@ export class LoginPage {
 
   async login(user: User){
     try{
-      let loading = this.loading.create({
+      var loading = this.loading.create({
         content : 'กรุณารอซักครู่ ..'
       });
       loading.present();
@@ -49,8 +49,10 @@ export class LoginPage {
      }
       }
      catch(e){
+      loading.dismiss();
        console.error(e);
        alert('รหัสผ่านไม่ถูกต้อง');
+       
     }
   }
 
