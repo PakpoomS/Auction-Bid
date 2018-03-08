@@ -39,7 +39,7 @@ export class LoginPage {
      const result = await this.afAuth.auth.signInWithEmailAndPassword(user.userid,user.pass);
      if(result){
       localStorage.setItem('token', this.token);
-      this.navCtrl.setRoot(Main1Page);
+      this.navCtrl.push(Main1Page);
       loading.dismiss();
       alert('ยินดีต้อนรับสู่ Auction-Bid');
      }
@@ -68,6 +68,10 @@ export class LoginPage {
       title : 'Email ถูกส่งเรียบร้อย',
       buttons : ['OK']
   });
+    let alert3 = this.alertCtrl.create({
+      title : 'ไม่มีอีเมลนี้อยู่ในระบบ',
+      buttons : ['OK']
+    })
     let alert = this.alertCtrl.create({
       title : 'กรุณากรอก Email เพื่อส่ง Reset Password',
       inputs:[
@@ -87,8 +91,12 @@ export class LoginPage {
         {
         text : 'ตกลง',
         handler: data =>{
-          this.afAuth.auth.sendPasswordResetEmail(data.email);
-          alert2.present();
+          this.afAuth.auth.sendPasswordResetEmail(data.email).then((data)=>{
+            alert2.present();
+          })
+          .catch((error)=>{
+            alert3.present();
+          });
         } 
       }
       

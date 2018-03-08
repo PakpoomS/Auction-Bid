@@ -1,0 +1,17 @@
+page-edit-item2 {
+    .center{
+        text-align: center;
+    }
+    .block{
+      position: relative !important; 
+        .deleteIcon {
+        position: absolute!important;
+        color : #ffffff!important;
+        margin-left: 30% !important;
+        transform: rotate(45deg)!important;
+      }
+      .deleteIcon:before {
+        font-size: 30px ;
+      }
+    }
+}

@@ -1,12 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams,AlertController } from 'ionic-angular';
-import { AngularFireAuth } from 'angularfire2/auth';
-import { AngularFireDatabase } from 'angularfire2/database-deprecated';
+import { AngularFireDatabase , FirebaseObjectObservable } from 'angularfire2/database-deprecated';
 import { Camera , CameraOptions } from '@ionic-native/camera';
-import { Item } from '../../model/user';
-
 /**
- * Generated class for the AddItemPage page.
+ * Generated class for the EditItem2Page page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -14,32 +11,33 @@ import { Item } from '../../model/user';
 
 @IonicPage()
 @Component({
-  selector: 'page-add-item',
-  templateUrl: 'add-item.html',
+  selector: 'page-edit-item2',
+  templateUrl: 'edit-item2.html',
 })
-export class AddItemPage {
-  Item = {} as Item;
-  private base64Img :string;
-  public imgA ;
-  
+export class EditItem2Page {
+  itemData : FirebaseObjectObservable <any>
+  private base64Img :string
+  public item;
+  public dbServer;
+  public dbServer2;
+  public dbImg;
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
               public afData : AngularFireDatabase,
-              public afAuth : AngularFireAuth,
               private camera : Camera,
               private alertCtrl : AlertController) {
   }
 
   ionViewDidLoad() {
-    this.imgA = [];
-    this.afAuth.authState.subscribe(auth=>{
-    this.afData.object(`profile/${auth.uid}`).subscribe(data =>{
-      this.Item.nameS = data.name;
-      console.log(this.Item.nameS)
-    })
-  })
+    this.dbImg = [];
+    this.item = this.navParams.get('item') 
+    this.dbServer = this.afData.object(`item/${this.item.$key}`)
+    this.dbServer2 = this.afData.object(`item/${this.item.$key}/img`)
+    this.dbImg = this.item.img;
+    console.log(this.dbServer2);
+    console.log('ionViewDidLoad EditItem2Page');
   }
-  
+
   takePhoto(){
     let options:CameraOptions = {
       destinationType: this.camera.DestinationType.DATA_URL,
@@ -48,13 +46,13 @@ export class AddItemPage {
       saveToPhotoAlbum: false,
       correctOrientation: true
       }
-      this.camera.getPicture(options).then((imageData) => {
-        this.base64Img = 'data:image/jpeg;base64,' + imageData;
-        this.imgA.push(this.base64Img);
-        this.imgA.reverse();
-      }, (err) => {
-      // Handle error
-      });
+      this.camera.getPicture(options).then((imageData)=>{
+        this.base64Img = 'data:image/jpeg;base64,'+imageData;
+        this.dbServer.img.push(this.base64Img);
+        this.dbServer.img.reverse();
+      },(err)=>{
+        //handle error
+      }); 
   }
   takePhotoAlbum(){
     let options:CameraOptions = {
@@ -64,27 +62,13 @@ export class AddItemPage {
       saveToPhotoAlbum: false,
       correctOrientation: true
       }
-      this.camera.getPicture(options).then((imageData) => {
-        this.base64Img = 'data:image/jpeg;base64,' + imageData;
-        this.imgA.push(this.base64Img);
-        this.imgA.reverse();
-      }, (err) => {
-      // Handle error
-      });
-  }
-  
-  save(){
-    if(this.imgA[0] != null){
-    this.afAuth.authState.subscribe(auth=>{
-      this.Item.UID = auth.uid;
-      this.afData.list('/item/').push(this.Item).ref.child('/img').set(this.imgA)
-      alert('บันทึกเรียบร้อย')
-      this.navCtrl.pop();
-    }),(err) =>{
-      alert('การบันทึกมีปัญหากรุณาลองใหม่อีกครั้ง')
-      console.log(err)
-    }
-    }else alert('กรุณาเพิ่มรูปสินค้าก่อนทำการบันทึกสินค้า')
+      this.camera.getPicture(options).then((imageData)=>{
+        this.base64Img = 'data:image/jpeg;base64,'+imageData;
+        this.dbImg.push(this.base64Img);
+        this.dbImg.reverse();
+      },(err)=>{
+        //handle error
+      }); 
   }
   deletePhoto(index) {
     let confirm = this
@@ -103,7 +87,7 @@ export class AddItemPage {
             handler: () => {
               console.log('Agree clicked');
               this
-                .imgA
+                .dbImg
                 .splice(index, 1);
               //return true;
             }
@@ -111,5 +95,15 @@ export class AddItemPage {
         ]
       });
     confirm.present();
+  }
+  save(itemData : any){
+   if(this.dbImg == null){
+     alert('ไม่สามารถลบรูปภาพทั้งหมดได้ กรุณาเพิ่มรูปภาพ')
+   }else{
+    this.dbServer.update(itemData);
+    this.dbServer2.set(this.dbImg)
+    this.navCtrl.pop();
+    alert('บันทึกเรียบร้อย')
+   }
   }
 }

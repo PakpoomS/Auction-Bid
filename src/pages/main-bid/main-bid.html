@@ -6,8 +6,11 @@
 -->
 <ion-header>
 
-  <ion-navbar color = "dark">
-    <ion-title>ระบบประมูลสินค้า</ion-title>
+  <ion-navbar color = "dark" hideBackButton>
+    <ion-title>ประมูลสินค้า </ion-title>
+    <ion-buttons right icon-only>
+        <button ion-button (click) ="Back()"><ion-icon name="apps"></ion-icon></button>
+      </ion-buttons>
   </ion-navbar>
 
 </ion-header>
@@ -15,11 +18,18 @@
 
 <ion-content padding style="background-color:#396E60;background-size:cover;">
     
-      <ion-card *ngFor="let item of dbServer | async ; let i = index" >
-       ชื่อสินค้า : {{item.name}} <br>
+      <ion-card *ngFor="let item of dbServer | async ;" >
+      <div *ngIf= "item.img != null">
+        <img src ={{item.img[0]}} height=200 width=200>
+        <ion-card-title>{{item.name}}
+        </ion-card-title>
+      </div>  
+       <ion-card-content><ion-card-header>ชื่อสินค้า : {{item.name}}</ion-card-header>
+         
        ข้อมูลทั่วไปสินค้า : {{item.des}} <br>
-       ผู้เปิดประมูล : {{item.nameS}} <br>
-      <ion-card style="width : 200px; height: 200px "><div *ngIf="item.img[0] !=null"><img src ={{item.img[0]}}></div></ion-card>
+       ผู้เปิดประมูล : {{item.nameS}} <br> 
+      </ion-card-content>
+     
      </ion-card>
       
 </ion-content>

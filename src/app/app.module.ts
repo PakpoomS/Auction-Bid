@@ -1,14 +1,12 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { IonicApp, IonicModule, IonicErrorHandler, LoadingController } from 'ionic-angular';
+import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
 //server
 import { AngularFireModule} from 'angularfire2';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireDatabaseModule, } from 'angularfire2/database-deprecated';
-import firebase from 'firebase';
-import { Facebook } from '@ionic-native/facebook';
 
 
 var config = {
@@ -30,6 +28,8 @@ import { ModifyUserPage } from '../pages/modify-user/modify-user';
 import { MainBidPage } from '../pages/main-bid/main-bid';
 import { MainSellPage } from '../pages/main-sell/main-sell';
 import { AddItemPage } from '../pages/add-item/add-item';
+import { EditItemPage } from '../pages/edit-item/edit-item'
+import { EditItem2Page } from '../pages/edit-item2/edit-item2'
 
 
 //API Device
@@ -50,7 +50,9 @@ import { Network } from '@ionic-native/network';
     ModifyUserPage,
     MainBidPage,
     MainSellPage,
-    AddItemPage
+    AddItemPage,
+    EditItemPage,
+    EditItem2Page
   ],
   imports: [
     BrowserModule,
@@ -77,7 +79,9 @@ import { Network } from '@ionic-native/network';
     ModifyUserPage,
     MainBidPage,
     MainSellPage,
-    AddItemPage
+    AddItemPage,
+    EditItemPage,
+    EditItem2Page
   ],
   providers: [
     StatusBar,
