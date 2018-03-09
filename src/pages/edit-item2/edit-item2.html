@@ -45,6 +45,6 @@
           <ion-option  value = "อื่น ๆ">อื่น ๆ</ion-option>
         </ion-select>
     </ion-item>
-    <button ion-button full color ="dark" (click)="save({name : name.value,des : des.value,sort : sort.value })">บันทึกข้อมูล&nbsp;<ion-icon name="checkmark-circle-outline"></ion-icon></button>
-
+    <button ion-button full color ="dark" (click)="save({name : name.value,des : des.value,sort : sort.value })">บันทึกข้อมูล&nbsp;<ion-icon name="checkmark-circle-outline"></ion-icon></button><br>
+    <button ion-button full color ="danger" (click)="delete()">ลบข้อมูล&nbsp;<ion-icon name="checkmark-circle-outline"></ion-icon></button>
 </ion-content>

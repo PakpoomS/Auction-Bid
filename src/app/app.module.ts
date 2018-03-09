@@ -28,8 +28,9 @@ import { ModifyUserPage } from '../pages/modify-user/modify-user';
 import { MainBidPage } from '../pages/main-bid/main-bid';
 import { MainSellPage } from '../pages/main-sell/main-sell';
 import { AddItemPage } from '../pages/add-item/add-item';
-import { EditItemPage } from '../pages/edit-item/edit-item'
-import { EditItem2Page } from '../pages/edit-item2/edit-item2'
+import { EditItemPage } from '../pages/edit-item/edit-item';
+import { EditItem2Page } from '../pages/edit-item2/edit-item2';
+import { Bid2Page } from '../pages/bid2/bid2';
 
 
 //API Device
@@ -52,7 +53,8 @@ import { Network } from '@ionic-native/network';
     MainSellPage,
     AddItemPage,
     EditItemPage,
-    EditItem2Page
+    EditItem2Page,
+    Bid2Page
   ],
   imports: [
     BrowserModule,
@@ -81,7 +83,8 @@ import { Network } from '@ionic-native/network';
     MainSellPage,
     AddItemPage,
     EditItemPage,
-    EditItem2Page
+    EditItem2Page,
+    Bid2Page
   ],
   providers: [
     StatusBar,

@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar color = "dark">
-    <ion-title>แก้ไขสินค้าที่เปิดประมูลล</ion-title>
+    <ion-title>แก้ไขสินค้าที่เปิดประมูล</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -15,16 +15,16 @@
 
 <ion-content padding style="background-color:#396E60;background-size:cover;">
     
-    <ion-card *ngFor="let item of dbServer | async ;"(click)="gotoEdit2(item)">
-    <div *ngIf ="item.img != null">
+    <ion-card *ngFor="let item of dbServer | async ; let id = index "(click)="gotoEdit2(item)">
     <div *ngIf="this.UID == item.UID">
+        <div *ngIf ="item.img != null">
         <img src ={{item.img[0]}} height=200 width=200>
-      
+        </div>  
        <ion-card-content>
+         <ion-card-header>สินค้าชิ้นที่ : {{id}}</ion-card-header>
          <ion-card-header>ชื่อสินค้า : {{item.name}}</ion-card-header>
                     ข้อมูลทั่วไปสินค้า : {{item.des}} <br>
       </ion-card-content>
-    </div>  
     </div>
   </ion-card>
 </ion-content>

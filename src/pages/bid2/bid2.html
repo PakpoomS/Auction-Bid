@@ -1,0 +1,44 @@
+<!--
+  Generated template for the Bid2Page page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color = "dark">
+    <ion-title>{{item.name}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding style="background-color:#396E60;background-size:cover;">
+   
+  <ion-grid>
+    <ion-row>
+        <ion-col col-6 *ngFor="let img of img ;">
+        <ion-card>
+            <img [src]="img" imageViewer>
+        </ion-card>
+        </ion-col>
+    </ion-row>
+</ion-grid>
+
+<ion-card>
+   <strong> ชื่อ : </strong> {{(dbServer| async)?.name}} <br>
+    <strong>ข้อมูลทั่วไป :</strong> {{(dbServer| async)?.des}} <br>
+    <strong> ประเภทสินค้า : </strong> {{(dbServer| async)?.sort}} <br>
+</ion-card>
+<br>
+
+
+<ion-card>
+    <div *ngIf = "(dbServer2 | async)?.Img ">
+    <img [src] = "(dbServer2 | async)?.Img" height=200 width=200 imageViewer>
+    </div>
+    <ion-card-title>รูปจำตัวผู้ขาย</ion-card-title>
+    <strong> ผู้ขาย : </strong> {{(dbServer| async)?.nameS}}  <br>
+    <strong>  เบอร์โทรศัพท์ผู้ขาย : </strong> {{(dbServer2| async)?.phone}} <br>
+</ion-card>
+</ion-content>

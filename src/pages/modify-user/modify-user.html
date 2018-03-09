@@ -17,14 +17,14 @@
   
   
 
-  <ion-title color= "dark">Photo</ion-title>
+  <ion-title color= "dark">รูปปัจจุบัน</ion-title>
   
   <ion-card style="width : 200px; height: 200px" *ngIf= "(dbServer | async)?.Img">
   <img [src] = "(dbServer | async)?.Img" imageViewer>
   </ion-card>
 
   
-  <ion-title color= "dark" *ngIf="profile.Img">New Photo</ion-title>
+  <ion-title color= "dark" *ngIf="profile.Img">รูปภาพใหม่</ion-title>
   <ion-card style="width : 200px; height: 200px" *ngIf= "profile.Img">
   <img [src] = "profile.Img" imageviewer>
   
@@ -33,19 +33,19 @@
   <button ion-button color ="dark" (click)="takePhoto()">Camera&nbsp;<ion-icon name="camera"></ion-icon></button>
   <button ion-button color ="dark" (click)="takePhotoAlbum()">Album&nbsp; <ion-icon name="albums"></ion-icon></button>
   <ion-item>
-    <ion-label floating>Name : </ion-label>
+    <ion-label floating>ชื่อ : </ion-label>
     <ion-input #name [ngModel]="(dbServer | async)?.name"></ion-input>
   </ion-item>
   <ion-item>
-  <ion-label floating>Address : </ion-label>
+  <ion-label floating>ที่อยูู่ : </ion-label>
     <ion-input #address [ngModel]="(dbServer | async)?.address"></ion-input>
   </ion-item>
   <ion-item>
-  <ion-label floating>Card : </ion-label>
+  <ion-label floating>รหัสบัตรประชาชน : </ion-label>
       <ion-input #card [ngModel]="(dbServer | async)?.card"></ion-input>
   </ion-item>
   <ion-item>
-    <ion-label floating>Phone : </ion-label>
+    <ion-label floating>เบอร์โทรศัพท์ : </ion-label>
       <ion-input #phone [ngModel]="(dbServer | async)?.phone"></ion-input>
  </ion-item>
 

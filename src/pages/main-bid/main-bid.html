@@ -17,14 +17,13 @@
 
 
 <ion-content padding style="background-color:#396E60;background-size:cover;">
-    
-      <ion-card *ngFor="let item of dbServer | async ;" >
+      <ion-card *ngFor="let item of dbServer | async ;" (click)="gotoBid2(item)">
       <div *ngIf= "item.img != null">
-        <img src ={{item.img[0]}} height=200 width=200>
+        <img src ={{item.img[0]}} height=200 width=200 imageViewer>
         <ion-card-title>{{item.name}}
         </ion-card-title>
       </div>  
-       <ion-card-content><ion-card-header>ชื่อสินค้า : {{item.name}}</ion-card-header>
+       <ion-card-content><ion-card-header><strong>ชื่อสินค้า : {{item.name}}</strong></ion-card-header>
          
        ข้อมูลทั่วไปสินค้า : {{item.des}} <br>
        ผู้เปิดประมูล : {{item.nameS}} <br> 

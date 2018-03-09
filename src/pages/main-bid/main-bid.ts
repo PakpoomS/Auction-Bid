@@ -5,6 +5,8 @@ import { AngularFireDatabase , FirebaseObjectObservable } from 'angularfire2/dat
 import { User } from "../../model/user";
 import { Item } from "../../model/user";
 
+import { Bid2Page } from '../bid2/bid2'
+
 /**
  * Generated class for the MainBidPage page.
  *
@@ -24,6 +26,7 @@ export class MainBidPage {
   public dbServer ;
   public dbimgServer ;
   public test;
+  public dbRef;
 
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
@@ -31,10 +34,19 @@ export class MainBidPage {
   }
 
   ionViewDidLoad(){
+    this.dbRef=[];
     this.dbServer = this.afData.list('/item')
+    this.afData.list('/item').subscribe((data)=>{
+      this.dbRef = data;
+    });
   }
   Back(){
     this.navCtrl.pop();
+  }
+  gotoBid2(item){
+    this.navCtrl.push(Bid2Page,{
+      item : item
+    });
   }
 }
   

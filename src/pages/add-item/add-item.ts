@@ -74,7 +74,6 @@ export class AddItemPage {
   }
   
   save(){
-    if(this.imgA[0] != null){
     this.afAuth.authState.subscribe(auth=>{
       this.Item.UID = auth.uid;
       this.afData.list('/item/').push(this.Item).ref.child('/img').set(this.imgA)
@@ -84,7 +83,6 @@ export class AddItemPage {
       alert('การบันทึกมีปัญหากรุณาลองใหม่อีกครั้ง')
       console.log(err)
     }
-    }else alert('กรุณาเพิ่มรูปสินค้าก่อนทำการบันทึกสินค้า')
   }
   deletePhoto(index) {
     let confirm = this

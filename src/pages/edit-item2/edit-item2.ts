@@ -97,13 +97,31 @@ export class EditItem2Page {
     confirm.present();
   }
   save(itemData : any){
-   if(this.dbImg == null){
-     alert('ไม่สามารถลบรูปภาพทั้งหมดได้ กรุณาเพิ่มรูปภาพ')
-   }else{
     this.dbServer.update(itemData);
     this.dbServer2.set(this.dbImg)
     this.navCtrl.pop();
     alert('บันทึกเรียบร้อย')
-   }
+  }
+  delete(){
+    let alertMe = this
+    .alertCtrl
+    .create({
+      title : 'คุณต้องการลบข้อมูลนี้ใช่หรือไม่ ? ',
+      buttons:[
+        {
+          text : 'ยกเลิก',
+          handler:() =>{
+            console.log('ยกเลิก')
+          }
+        },{
+          text : 'ตกลง',
+          handler:() =>{
+            this.dbServer.remove();
+            this.navCtrl.pop();
+          }
+        }
+      ]
+    });
+    alertMe.present();
   }
 }
