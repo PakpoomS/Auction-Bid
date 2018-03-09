@@ -8,6 +8,7 @@ import { PagePage} from '../page/page';
 import { ModifyUserPage } from'../modify-user/modify-user';
 import { MainBidPage } from '../main-bid/main-bid';
 import { MainSellPage } from '../main-sell/main-sell';
+import { TabsPage } from '../tabs/tabs'
 
 
 /**
@@ -62,7 +63,7 @@ export class Main1Page {
   }
 
   gotoBid(){
-    this.navCtrl.push(MainBidPage);
+    this.navCtrl.push(TabsPage);
   }
   gotoSell(){
     this.navCtrl.push(MainSellPage);

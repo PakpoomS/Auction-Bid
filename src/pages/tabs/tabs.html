@@ -1,0 +1,27 @@
+<!--
+  Generated template for the TabsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+
+
+
+<ion-content padding>
+
+</ion-content>
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar color = dark hideBackButton>
+      <ion-title>ระบบประมูลสินค้า </ion-title>
+      <ion-buttons right icon-only>
+          <button ion-button (click) ="Back()"><ion-icon name="apps"></ion-icon></button>
+        </ion-buttons>
+    </ion-navbar>
+  
+</ion-header>
+
+<ion-tabs color = dark>
+  <ion-tab [root]="mainbid" tabTitle ="สินค้า" tabIcon="albums"></ion-tab>
+  <ion-tab [root]="winBid" tabTitle ="สินค้าที่ชนะการประมูล" tabIcon="ios-checkbox-outline"></ion-tab>
+</ion-tabs>

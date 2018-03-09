@@ -39,7 +39,7 @@ export class LoginPage {
      const result = await this.afAuth.auth.signInWithEmailAndPassword(user.userid,user.pass);
      if(result){
       localStorage.setItem('token', this.token);
-      this.navCtrl.push(Main1Page);
+      this.navCtrl.setRoot(Main1Page);
       loading.dismiss();
       alert('ยินดีต้อนรับสู่ Auction-Bid');
      }

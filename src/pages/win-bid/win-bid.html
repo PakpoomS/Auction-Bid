@@ -1,0 +1,38 @@
+<!--
+  Generated template for the WinBidPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>winBid</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding style="background-color:#396E60;background-size:cover;">
+    <ion-card *ngFor="let item of dbServer | async ;">
+    <div *ngIf="item.UID !=  uidUser">
+      <div *ngIf ="item.winBid == emailUser">
+        <div *ngIf="item.Status == 'ปิดการประมูล'">
+        <div *ngIf= "item.img != null">
+          <img src ={{item.img[0]}} height=200 width=200 imageViewer>
+          <ion-card-title>{{item.name}}
+          </ion-card-title>
+        </div>  
+         <ion-card-content><ion-card-header><strong>ชื่อสินค้า : {{item.name}}</strong></ion-card-header>
+          
+         ข้อมูลทั่วไปสินค้า : {{item.des}} <br>
+         ผู้เปิดประมูล : {{item.nameS}} <br> 
+         ราคาที่ชนะการประมูล : {{item.priceStatus}} THB<br>
+         ผู้ชนะการประมูล: {{item.winBid}} <br>
+         สถานะการจัดส่ง : {{item.Delivery}} <br>
+        </ion-card-content>
+      </div>
+    </div>
+    </div>
+  </ion-card>
+</ion-content>

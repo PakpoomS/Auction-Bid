@@ -30,7 +30,7 @@ export class EditItem2Page {
 
   ionViewDidLoad() {
     this.dbImg = [];
-    this.item = this.navParams.get('item') 
+    this.item = this.navParams.get('item')
     this.dbServer = this.afData.object(`item/${this.item.$key}`)
     this.dbServer2 = this.afData.object(`item/${this.item.$key}/img`)
     this.dbImg = this.item.img;
@@ -48,8 +48,8 @@ export class EditItem2Page {
       }
       this.camera.getPicture(options).then((imageData)=>{
         this.base64Img = 'data:image/jpeg;base64,'+imageData;
-        this.dbServer.img.push(this.base64Img);
-        this.dbServer.img.reverse();
+        this.dbImg.push(this.base64Img);
+        this.dbImg.reverse();
       },(err)=>{
         //handle error
       }); 

@@ -34,7 +34,7 @@ export class Signup2Page {
   saveProfile(){
     this.afAuth.authState.take(1).subscribe(auth =>{
         this.afData.object(`profile/${auth.uid}`).set(this.profile)
-        .then(() =>this.navCtrl.push(Main1Page));
+        .then(() =>this.navCtrl.setRoot(Main1Page));
         localStorage.setItem('token',this.token)
     })
   }

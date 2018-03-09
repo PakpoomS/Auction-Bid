@@ -14,7 +14,10 @@
 
 
 <ion-content padding style="background-color:#396E60;background-size:cover;">
-   
+<ion-fab>
+    <button ion-fab color= dark (click)="BackHome()"><ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon></button>
+</ion-fab>
+
   <ion-grid>
     <ion-row>
         <ion-col col-6 *ngFor="let img of img ;">
@@ -30,8 +33,21 @@
     <strong>ข้อมูลทั่วไป :</strong> {{(dbServer| async)?.des}} <br>
     <strong> ประเภทสินค้า : </strong> {{(dbServer| async)?.sort}} <br>
 </ion-card>
-<br>
-
+<ion-card>
+    <strong> Status : </strong> {{(dbServer| async)?.Status}}<br>
+    <strong> ประเภทการ Bid ของสินค้า : </strong> {{(dbServer| async)?.catItem}}<br>
+    <strong> สินค้าเปิดราคาประมูลที่ : </strong> {{(dbServer| async)?.priceStart}} THB <br>
+    <strong> สินค้าราคาปัจจุบัน : </strong> {{(dbServer| async)?.priceStatus}} THB <br>
+    <strong> ผู้ชนะปัจจุบัน : </strong> {{(dbServer| async)?.winBid}}<br>
+    <strong> ประมูลขั้นต่ำ : </strong> {{(dbServer| async)?.priceBid}} THB<br>
+</ion-card>
+<ion-list>
+<ion-item color = dark >
+  <ion-label floating>ใส่ราคาสินค้าที่ท่านต้องการจะประมูล : THB</ion-label>
+    <ion-input type = "number" [(ngModel)]="bid"></ion-input> 
+</ion-item>
+</ion-list>
+<button ion-button full color ="primary" (click)="Bid()">ประมูลเลย &nbsp; <ion-icon name="thumbs-up"></ion-icon></button>
 
 <ion-card>
     <div *ngIf = "(dbServer2 | async)?.Img ">
@@ -42,3 +58,4 @@
     <strong>  เบอร์โทรศัพท์ผู้ขาย : </strong> {{(dbServer2| async)?.phone}} <br>
 </ion-card>
 </ion-content>
+

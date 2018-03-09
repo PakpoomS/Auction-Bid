@@ -35,7 +35,7 @@ export class AddItemPage {
     this.afAuth.authState.subscribe(auth=>{
     this.afData.object(`profile/${auth.uid}`).subscribe(data =>{
       this.Item.nameS = data.name;
-      console.log(this.Item.nameS)
+      console.log('add-Item')
     })
   })
   }
@@ -74,14 +74,21 @@ export class AddItemPage {
   }
   
   save(){
-    this.afAuth.authState.subscribe(auth=>{
-      this.Item.UID = auth.uid;
-      this.afData.list('/item/').push(this.Item).ref.child('/img').set(this.imgA)
-      alert('บันทึกเรียบร้อย')
-      this.navCtrl.pop();
-    }),(err) =>{
-      alert('การบันทึกมีปัญหากรุณาลองใหม่อีกครั้ง')
-      console.log(err)
+    if(this.Item.catItem && this.Item.priceStart && this.Item.priceBid != null){
+      this.afAuth.authState.subscribe(auth=>{
+        this.Item.UID = auth.uid;
+        this.Item.priceStatus = this.Item.priceStart;
+        this.Item.Delivery = 'กำลังประมูล';
+        this.Item.Status = 'เปิดการประมูล';
+        this.afData.list('/item/').push(this.Item).ref.child('/img').set(this.imgA)
+        alert('บันทึกเรียบร้อย')
+        this.navCtrl.pop();
+      }),(err) =>{
+        alert('การบันทึกมีปัญหากรุณาลองใหม่อีกครั้ง')
+        console.log(err)
+      }
+    }else{
+      alert('ตั้งค่าบิทไม่ถูกต้องกรุณาตั้งใหม่อีกครั้ง')
     }
   }
   deletePhoto(index) {

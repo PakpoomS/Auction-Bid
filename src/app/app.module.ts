@@ -1,6 +1,6 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
+import { IonicApp, IonicModule, IonicErrorHandler, Tab } from 'ionic-angular';
 import { MyApp } from './app.component';
 
 //server
@@ -19,6 +19,7 @@ var config = {
 };
 
 //Page
+import { TabsPage } from '../pages/tabs/tabs';
 import { PagePage } from '../pages/page/page';
 import { SignupPage } from '../pages/signup/signup';
 import { LoginPage } from '../pages/login/login';
@@ -31,6 +32,8 @@ import { AddItemPage } from '../pages/add-item/add-item';
 import { EditItemPage } from '../pages/edit-item/edit-item';
 import { EditItem2Page } from '../pages/edit-item2/edit-item2';
 import { Bid2Page } from '../pages/bid2/bid2';
+import { WinBidPage } from '../pages/win-bid/win-bid';
+import { WaitBidPage } from '../pages/wait-bid/wait-bid'
 
 
 //API Device
@@ -54,7 +57,10 @@ import { Network } from '@ionic-native/network';
     AddItemPage,
     EditItemPage,
     EditItem2Page,
-    Bid2Page
+    Bid2Page,
+    WinBidPage,
+    TabsPage,
+    WaitBidPage
   ],
   imports: [
     BrowserModule,
@@ -84,7 +90,10 @@ import { Network } from '@ionic-native/network';
     AddItemPage,
     EditItemPage,
     EditItem2Page,
-    Bid2Page
+    Bid2Page,
+    WinBidPage,
+    TabsPage,
+    WaitBidPage
   ],
   providers: [
     StatusBar,
