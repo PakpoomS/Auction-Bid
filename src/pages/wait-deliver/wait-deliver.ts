@@ -2,9 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AngularFireDatabase , FirebaseObjectObservable } from 'angularfire2/database-deprecated';
 import { AngularFireAuth } from 'angularfire2/auth';
-
 /**
- * Generated class for the WaitBidPage page.
+ * Generated class for the WaitDeliverPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -12,10 +11,10 @@ import { AngularFireAuth } from 'angularfire2/auth';
 
 @IonicPage()
 @Component({
-  selector: 'page-wait-bid',
-  templateUrl: 'wait-bid.html',
+  selector: 'page-wait-deliver',
+  templateUrl: 'wait-deliver.html',
 })
-export class WaitBidPage {
+export class WaitDeliverPage {
   public dbServer ;
   public dbimgServer ;
   public test;

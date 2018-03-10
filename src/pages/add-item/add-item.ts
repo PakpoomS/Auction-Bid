@@ -74,7 +74,12 @@ export class AddItemPage {
   }
   
   save(){
+    let x = parseInt(this.Item.priceStart)*1;
+    let y = parseInt(this.Item.priceEnd)*1;
+    console.log(this.Item.priceStart);
+    console.log(this.Item.priceEnd);
     if(this.Item.catItem && this.Item.priceStart && this.Item.priceBid != null){
+      if(x < y){
       this.afAuth.authState.subscribe(auth=>{
         this.Item.UID = auth.uid;
         this.Item.priceStatus = this.Item.priceStart;
@@ -86,6 +91,8 @@ export class AddItemPage {
       }),(err) =>{
         alert('การบันทึกมีปัญหากรุณาลองใหม่อีกครั้ง')
         console.log(err)
+      }}else{
+        alert('ราคาปิดประมูลไม่ควรน้อยกว่าราคาเปิดประมูล')
       }
     }else{
       alert('ตั้งค่าบิทไม่ถูกต้องกรุณาตั้งใหม่อีกครั้ง')

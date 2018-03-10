@@ -1,6 +1,6 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { IonicApp, IonicModule, IonicErrorHandler, Tab } from 'ionic-angular';
+import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
 //server
@@ -33,7 +33,8 @@ import { EditItemPage } from '../pages/edit-item/edit-item';
 import { EditItem2Page } from '../pages/edit-item2/edit-item2';
 import { Bid2Page } from '../pages/bid2/bid2';
 import { WinBidPage } from '../pages/win-bid/win-bid';
-import { WaitBidPage } from '../pages/wait-bid/wait-bid'
+import { WaitBidPage } from '../pages/wait-bid/wait-bid';
+import { WaitDeliverPage } from '../pages/wait-deliver/wait-deliver';
 
 
 //API Device
@@ -60,7 +61,8 @@ import { Network } from '@ionic-native/network';
     Bid2Page,
     WinBidPage,
     TabsPage,
-    WaitBidPage
+    WaitBidPage,
+    WaitDeliverPage
   ],
   imports: [
     BrowserModule,
@@ -93,7 +95,8 @@ import { Network } from '@ionic-native/network';
     Bid2Page,
     WinBidPage,
     TabsPage,
-    WaitBidPage
+    WaitBidPage,
+    WaitDeliverPage
   ],
   providers: [
     StatusBar,
