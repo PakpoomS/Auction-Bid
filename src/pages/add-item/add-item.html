@@ -48,40 +48,25 @@
         <ion-option  value = "อื่น ๆ">อื่น ๆ</ion-option>
       </ion-select>
   </ion-item>
-  <ion-item>
-    <ion-label>ประเภทของการประมูล</ion-label>
-    <ion-select type="text" [(ngModel)]= "Item.catItem"> 
-      <ion-option  value = "Autowin">Autowin(ตรงราคาที่ตั้งไว้)</ion-option>
-      <ion-option  value = "Countdown">Countdown(จับเวลาการประมูล)</ion-option>
-    </ion-select>
-  </ion-item>
 
-  <ion-item *ngIf="Item.catItem == 'Autowin'">
+  <ion-item >
       <ion-label floating>เปิดประมูลที่ : THB</ion-label>
       <ion-input type="number" [(ngModel)]= "Item.priceStart" ></ion-input>
   </ion-item>
-  
-  <ion-item *ngIf="Item.catItem == 'Countdown'">
-    <ion-label floating>เปิดเริ่มต้นประมูลที่ : THB</ion-label>
-    <ion-input type="number" [(ngModel)]= "Item.priceStart" ></ion-input>
-  </ion-item>
-  
-  <ion-item *ngIf="Item.catItem == 'Autowin'">
-    <ion-label floating>ปิดประมูลที่ : THB</ion-label>
-    <ion-input type="number" [(ngModel)]= "Item.priceEnd" ></ion-input>
-    </ion-item>
     
-    <ion-item *ngIf="Item.catItem == 'Countdown'|| Item.catItem == 'Autowin'">
+  <ion-item>
         <ion-label floating>บิทขั้นต่ำที่ : THB</ion-label>
         <ion-input type="number" [(ngModel)]= "Item.priceBid" ></ion-input>
-    </ion-item>
- 
-  <ion-item *ngIf="Item.catItem == 'Countdown'">
-      <ion-label floating>นับเวลาถอยหลัง : SEC</ion-label>
-      <ion-input type="number" [(ngModel)]= "Item.time" ></ion-input>
   </ion-item>
 
+ <ion-item>
+  <ion-label>เวลาเปิดสินค้า</ion-label><br>
+  <ion-datetime displayFormat="เวลา: HH:mm วันที่: DD/MM/YYYY"  [(ngModel)]="Item.timeOpen"></ion-datetime>
+ </ion-item>
+ <ion-item>
+  <ion-label>เวลาปิดสินค้า</ion-label><br>
+    <ion-datetime displayFormat="เวลา: HH:mm วันที่: DD/MM/YYYY"  [(ngModel)]="Item.timeClosed"></ion-datetime>
+  </ion-item>
   <br>
   <button ion-button full color ="dark" (click)="save()">บันทึก &nbsp; <ion-icon name="build"></ion-icon></button>
-
 </ion-content>

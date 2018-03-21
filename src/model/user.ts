@@ -12,19 +12,19 @@ export interface Profile{
 }
 
 export interface Item{
-    name : string;
-    des : string;
-    sort : string;
-    priceStart: any;
-    priceBid: any;
-    priceEnd : any;
-    time : any;
-    UID : any;
-    nameS : any;
-    catItem : string;
-    winBid : any;
-    Status : any;
-    priceStatus : any
+    name : string; // ชื่อสินค้า
+    des : string; // ข้อมูลสินค้า
+    sort : string; // ประเภทสินค้า
+    timeOpen : any; // เวลาเปิด
+    timeClosed : any; // เวลาปิด
+    priceStart: any; // ราคาเปิดประมูล
+    priceBid: any; // ราคาประมูลขั้นต่ำ
+    priceEnd : any; // ราคาปิดประมูล
+    UID : any; // UID เจ้าของสินค้า
+    nameOpen : any; // ชื่อผู้เปิดสินค้า
+    winBid : any; 
+    Status : any; // การดำเนินการของสินค้า
+    priceStatus : any // ราคาประมูลปัจจุบัน
     Delivery : any
 }
 

@@ -30,19 +30,28 @@ export class Bid2Page {
   public priceStatus;
   public priceEnd;
   public nameAuth;
+  public dbServerFa;
+  public ref
+  public check = false ;
 
   
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
               public afData : AngularFireDatabase,
-              public afAtuh : AngularFireAuth) {
+              public afAuth : AngularFireAuth) {
   }
 
   ionViewDidLoad() {
-    this.afAtuh.authState.subscribe(auth=>{
+    this.ref = []
+    this.afAuth.authState.subscribe(auth=>{
+      this.afData.list(`profile/${auth.uid}/favorite`).subscribe((data2)=>{
+        this.ref = data2
+        console.log(this.ref)
+      })  
       this.nameAuth = auth.email
     })
   this.id = this.navParams.get('item');
+  console.log(this.id.$key);
   this.dbServer = this.afData.object(`item/${this.id.$key}`)
   this.dbServer2 = this.afData.object(`profile/${this.id.UID}`)
   this.afData.object(`item/${this.id.$key}`).subscribe((data)=>{
@@ -57,7 +66,24 @@ export class Bid2Page {
   console.log(this.dbBid)
   }
   Bid(){
-    if(this.dbBid == this.bid || this.dbBid < this.bid){
+    let y = this.priceStatus + this.dbBid
+    if(this.bid < this.priceStatus){
+      console.log('ราคาของท่านน้อยกว่าราคา ประมูลปัจจุบัน')
+      alert('ราคาของท่านน้อยกว่าราคาประมูลปัจจุบัน')
+    }else if(this.bid < y ){
+      console.log('ราคาของท่านน้อยกว่าการประมูลขั้นต่ำ')
+      alert('กรุณาประมูลให้สูงกว่าราคาขั้นต่ำ')
+    }else if (this.bid == null){
+      alert('กรุณาใส่ราคาที่ท่านต้องการประมูล')
+    }else{
+      let filed = []; 
+      this.afData.object(`item/${this.id.$key}/priceStatus`).set(this.bid);
+      this.afData.object(`item/${this.id.$key}/winBid`).set(this.nameAuth);
+      filed.push(this.nameAuth,this.bid)
+      this.afData.list(`item/${this.id.$key}/customer`).push(filed)
+      alert('ประมูลเรียบร้อย')
+    }
+    /* if(this.dbBid == this.bid || this.dbBid < this.bid){
       this.bidStatus = parseInt(this.priceStatus)+parseInt(this.bid);
       console.log(this.bidStatus)
       this.afData.object(`item/${this.id.$key}/priceStatus`).set(this.bidStatus);
@@ -71,7 +97,39 @@ export class Bid2Page {
     }
     }else{
       alert('ราคาประมูลต่ำกว่า ขั้นต่ำ')
+    }*/
+  }
+  favorite(){
+    let i
+    for(i=0 ; i<this.ref.length ;i++){
+      console.log(this.ref[i].$value)
+      if(this.ref[i].$value == this.id.$key){
+        console.log('ซ้ำ')
+        this.check = true;
+        break;
+      }
     }
+    console.log(this.check)
+    if(this.check == true){
+      alert('มีการบันทึกเป็นที่ชื่นชอบไว้แล้ว')
+    }else{
+      this.afAuth.authState.subscribe(auth=>{
+      this.afData.list(`profile/${auth.uid}/favorite`).push(this.id.$key)
+      alert('บันทึกเป็นที่ชื่นชอบเรียบร้อย')
+      })
+    }
+    /*let x = []
+    this.afAuth.authState.subscribe(auth=>{
+     // this.afData.list(`profile/${auth.uid}/favorite`).push(this.id.$key)
+      this.afData.database.ref(`profile/${auth.uid}/favorite`).once("value", snapshot=>{
+        const email = snapshot.val()
+        console.log(email)
+        if(email == this.id.$key){
+          alert('ซ้ำ')
+        }
+      }) 
+    })*/
+    
   }
   BackHome(){
     this.navCtrl.pop()

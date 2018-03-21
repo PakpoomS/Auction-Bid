@@ -19,15 +19,15 @@ var config = {
 };
 
 //Page
-import { TabsPage } from '../pages/tabs/tabs';
-import { PagePage } from '../pages/page/page';
-import { SignupPage } from '../pages/signup/signup';
-import { LoginPage } from '../pages/login/login';
-import { Main1Page } from '../pages/main1/main1';
-import { Signup2Page} from '../pages/signup2/signup2';
-import { ModifyUserPage } from '../pages/modify-user/modify-user';
-import { MainBidPage } from '../pages/main-bid/main-bid';
-import { MainSellPage } from '../pages/main-sell/main-sell';
+import { TabsPage } from '../pages/tabs/tabs'; //หน้าแท๊บรวมการประมูล
+import { PagePage } from '../pages/page/page'; //หน้าแรก
+import { SignupPage } from '../pages/signup/signup'; // หน้าสมัครสมาชิก
+import { LoginPage } from '../pages/login/login'; // หน้าล๊อกอิน
+import { Main1Page } from '../pages/main1/main1'; // หน้าหลัก
+import { Signup2Page} from '../pages/signup2/signup2'; // หน้าสมัครสมาชิก 2 
+import { ModifyUserPage } from '../pages/modify-user/modify-user'; // หน้าแก้ไขข้อมูลส่วนตัว
+import { MainBidPage } from '../pages/main-bid/main-bid'; // หน้าการหลักการประมูล
+import { MainSellPage } from '../pages/main-sell/main-sell'; // หน้าหลักการขาย
 import { AddItemPage } from '../pages/add-item/add-item';
 import { EditItemPage } from '../pages/edit-item/edit-item';
 import { EditItem2Page } from '../pages/edit-item2/edit-item2';
@@ -35,6 +35,8 @@ import { Bid2Page } from '../pages/bid2/bid2';
 import { WinBidPage } from '../pages/win-bid/win-bid';
 import { WaitBidPage } from '../pages/wait-bid/wait-bid';
 import { WaitDeliverPage } from '../pages/wait-deliver/wait-deliver';
+import { FavoritePage } from '../pages/favorite/favorite'
+import { BidNowPage } from '../pages/bid-now/bid-now'
 
 
 //API Device
@@ -62,7 +64,9 @@ import { Network } from '@ionic-native/network';
     WinBidPage,
     TabsPage,
     WaitBidPage,
-    WaitDeliverPage
+    WaitDeliverPage,
+    FavoritePage,
+    BidNowPage
   ],
   imports: [
     BrowserModule,
@@ -96,7 +100,9 @@ import { Network } from '@ionic-native/network';
     WinBidPage,
     TabsPage,
     WaitBidPage,
-    WaitDeliverPage
+    WaitDeliverPage,
+    FavoritePage,
+    BidNowPage
   ],
   providers: [
     StatusBar,

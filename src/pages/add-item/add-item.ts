@@ -4,7 +4,7 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase } from 'angularfire2/database-deprecated';
 import { Camera , CameraOptions } from '@ionic-native/camera';
 import { Item } from '../../model/user';
-
+import * as moment from 'moment';
 /**
  * Generated class for the AddItemPage page.
  *
@@ -31,10 +31,12 @@ export class AddItemPage {
   }
 
   ionViewDidLoad() {
+    this.Item.timeOpen = moment().format();
+    this.Item.timeClosed = moment().format();
     this.imgA = [];
     this.afAuth.authState.subscribe(auth=>{
     this.afData.object(`profile/${auth.uid}`).subscribe(data =>{
-      this.Item.nameS = data.name;
+      this.Item.nameOpen = data.name;
       console.log('add-Item')
     })
   })
@@ -74,7 +76,30 @@ export class AddItemPage {
   }
   
   save(){
-    let x = parseInt(this.Item.priceStart)*1;
+    const Now = new Date().getTime();
+    const date = new Date(this.Item.timeOpen).getTime();
+    const date2 = new Date(this.Item.timeClosed).getTime();
+    console.log(date);
+    console.log(date2);
+    if(this.Item.priceStart == null || this.Item.priceBid  == null){
+      console.log('ราคาสินค้าการเปิดประมูล และ ขั้นต่ำ ไม่สามารถเป็นค่าว่างได้');
+      alert('ราคาสินค้าการเปิดประมูล และ ขั้นต่ำ ไม่สามารถเป็นค่าว่างได้');
+    }else if (date2 <= date || Now > date2){
+      console.log('คุณตั้งค่าเวลาไม่ถูกต้อง');
+      alert('คุณตั้งค่าเวลาไม่ถูกต้อง');
+    }else{
+     this.afAuth.authState.subscribe(auth =>{
+       this.Item.UID = auth.uid;
+       this.Item.priceStatus = this.Item.priceStart;
+       this.Item.Status = 'รอการเปิดประมูล';
+       this.afData.list('/item/').push(this.Item).ref.child('/img').set(this.imgA)
+       alert('บันทึกข้อมูลเรียบร้อย')
+       this.navCtrl.pop();
+     }),(err)=>{
+       alert('การบันทึกมีปัญหากรุณาลองใหม่อีกครั้ง')
+     }
+    }
+    /*  let x = parseInt(this.Item.priceStart)*1;
     let y = parseInt(this.Item.priceEnd)*1;
     console.log(this.Item.priceStart);
     console.log(this.Item.priceEnd);
@@ -96,7 +121,7 @@ export class AddItemPage {
       }
     }else{
       alert('ตั้งค่าบิทไม่ถูกต้องกรุณาตั้งใหม่อีกครั้ง')
-    }
+    }*/
   }
   deletePhoto(index) {
     let confirm = this

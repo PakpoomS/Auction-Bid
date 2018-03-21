@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { MainBidPage } from '../main-bid/main-bid'
 import { WinBidPage } from '../win-bid/win-bid'
-
+import { FavoritePage } from '../favorite/favorite'
+import { BidNowPage } from '../bid-now/bid-now'
 /**
  * Generated class for the TabsPage page.
  *
@@ -21,6 +22,8 @@ export class TabsPage {
   }
   mainbid = MainBidPage;
   winBid = WinBidPage;
+  favorite = FavoritePage;
+  bidNow = BidNowPage;
   Back(){
     this.navCtrl.pop();
   }

@@ -41,6 +41,8 @@
     <strong> ผู้ชนะปัจจุบัน : </strong> {{(dbServer| async)?.winBid}}<br>
     <strong> ประมูลขั้นต่ำ : </strong> {{(dbServer| async)?.priceBid}} THB<br>
 </ion-card>
+<button ion-button full color ="primary" (click)="favorite()">ตั้งเป็นที่ชื่นชอบ &nbsp; <ion-icon name="thumbs-up"></ion-icon></button>
+<br>
 <ion-list>
 <ion-item color = dark >
   <ion-label floating>ใส่ราคาสินค้าที่ท่านต้องการจะประมูล : THB</ion-label>
