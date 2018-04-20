@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase , FirebaseObjectObservable } from 'angularfire2/database-deprecated';
-import { Item } from '../../model/user'
+import { Item , Auction } from '../../model/user'
 /**
  * Generated class for the Bid2Page page.
  *
@@ -24,6 +24,7 @@ export class Bid2Page {
   public img2;
   public dbServer ;
   public dbServer2;
+  public dbServer3;
   public dbServerBid;
   public bid;
   public bidStatus;
@@ -33,6 +34,7 @@ export class Bid2Page {
   public dbServerFa;
   public ref
   public check = false ;
+  public time;
 
   
   constructor(public navCtrl: NavController, 
@@ -59,11 +61,14 @@ export class Bid2Page {
     this.priceEnd = parseInt(data.priceEnd)*1;
     this.dbBid = parseInt(data.priceBid)*1;
     this.priceStatus = parseInt(data.priceStatus)*1;
+    this.time = data.timeClosed;
   })
   this.item.name = this.id.name;
   this.img = this.id.img ;
   this.img2 = this.dbServer2.Img;
+  this.dbServer3 = this.afData.list(`auction/${this.id.$key}`)
   console.log(this.dbBid)
+  
   }
   Bid(){
     let y = this.priceStatus + this.dbBid
@@ -77,10 +82,15 @@ export class Bid2Page {
       alert('กรุณาใส่ราคาที่ท่านต้องการประมูล')
     }else{
       let filed = []; 
+      filed.push(this.nameAuth,this.bid);
+      this.afData.list(`auction/${this.id.$key}`).push(filed)
       this.afData.object(`item/${this.id.$key}/priceStatus`).set(this.bid);
+      this.time = this.time + 15000;
+      this.afData.object(`item/${this.id.$key}/timeClosed`).set(this.time);
+      /*this.afData.object(`item/${this.id.$key}/priceStatus`).set(this.bid);
       this.afData.object(`item/${this.id.$key}/winBid`).set(this.nameAuth);
       filed.push(this.nameAuth,this.bid)
-      this.afData.list(`item/${this.id.$key}/customer`).push(filed)
+      this.afData.list(`item/${this.id.$key}/customer`).push(filed)*/
       alert('ประมูลเรียบร้อย')
     }
     /* if(this.dbBid == this.bid || this.dbBid < this.bid){

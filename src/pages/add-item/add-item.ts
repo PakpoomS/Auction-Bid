@@ -77,21 +77,20 @@ export class AddItemPage {
   
   save(){
     const Now = new Date().getTime();
-    const date = new Date(this.Item.timeOpen).getTime();
-    const date2 = new Date(this.Item.timeClosed).getTime();
+    const date = new Date(this.Item.timeClosed).getTime();
     console.log(date);
-    console.log(date2);
+    this.Item.timeClosed = date;
     if(this.Item.priceStart == null || this.Item.priceBid  == null){
       console.log('ราคาสินค้าการเปิดประมูล และ ขั้นต่ำ ไม่สามารถเป็นค่าว่างได้');
       alert('ราคาสินค้าการเปิดประมูล และ ขั้นต่ำ ไม่สามารถเป็นค่าว่างได้');
-    }else if (date2 <= date || Now > date2){
+    }else if ( Now > date){
       console.log('คุณตั้งค่าเวลาไม่ถูกต้อง');
       alert('คุณตั้งค่าเวลาไม่ถูกต้อง');
     }else{
      this.afAuth.authState.subscribe(auth =>{
        this.Item.UID = auth.uid;
        this.Item.priceStatus = this.Item.priceStart;
-       this.Item.Status = 'รอการเปิดประมูล';
+       this.Item.Status = 'เปิดประมูล';
        this.afData.list('/item/').push(this.Item).ref.child('/img').set(this.imgA)
        alert('บันทึกข้อมูลเรียบร้อย')
        this.navCtrl.pop();

@@ -9,6 +9,9 @@ import { Item } from "../../model/user";
 import { Bid2Page } from '../bid2/bid2'
 import { Main1Page } from '../main1/main1';
 import {TabsPage} from '../tabs/tabs'
+import { now } from 'moment';
+
+import * as firebase from 'firebase';
 
 /**
  * Generated class for the MainBidPage page.
@@ -31,13 +34,15 @@ export class MainBidPage {
   public test;
   public dbRef;
   public uidUser;
+  public now;
+  public distance
+
 
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
               public afData : AngularFireDatabase,
               public afAuth : AngularFireAuth) {
   }
-
   ionViewDidLoad(){
     this.afAuth.authState.subscribe(auth=>{
       this.uidUser = auth.uid
@@ -47,6 +52,9 @@ export class MainBidPage {
     this.afData.list('/item').subscribe((data)=>{
       this.dbRef = data;
     });
+    setInterval (()=>{
+      this.now = new Date().getTime();
+    },1000)  
   }
   Back(){
     this.navCtrl.setRoot(Main1Page);

@@ -41,6 +41,7 @@
     <strong> ผู้ชนะปัจจุบัน : </strong> {{(dbServer| async)?.winBid}}<br>
     <strong> ประมูลขั้นต่ำ : </strong> {{(dbServer| async)?.priceBid}} THB<br>
 </ion-card>
+
 <button ion-button full color ="primary" (click)="favorite()">ตั้งเป็นที่ชื่นชอบ &nbsp; <ion-icon name="thumbs-up"></ion-icon></button>
 <br>
 <ion-list>
@@ -50,7 +51,19 @@
 </ion-item>
 </ion-list>
 <button ion-button full color ="primary" (click)="Bid()">ประมูลเลย &nbsp; <ion-icon name="thumbs-up"></ion-icon></button>
-
+<br>
+<ion-card>
+    <ion-card-header><strong>รายชื่อผู้เข้าร่วมประมูลล่าสุด</strong></ion-card-header>
+<div *ngFor="let item of dbServer3  | async | reverse ; let i = index ; let last = last">
+    <div *ngIf="i<5">
+    <ion-card-content><ion-card-header><strong>
+        ผู้ประมูล : {{item[0]}}</strong></ion-card-header>
+        ราคาประมูล : {{item[1]}}
+       </ion-card-content>
+    </div>
+</div>
+</ion-card>
+<br>
 <ion-card>
     <div *ngIf = "(dbServer2 | async)?.Img ">
     <img [src] = "(dbServer2 | async)?.Img" height=200 width=200 imageViewer>

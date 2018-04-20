@@ -39,12 +39,17 @@ import { FavoritePage } from '../pages/favorite/favorite'
 import { BidNowPage } from '../pages/bid-now/bid-now'
 
 
+
 //API Device
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Camera } from'@ionic-native/camera';
 import { IonicImageViewerModule } from 'ionic-img-viewer';
 import { Network } from '@ionic-native/network';
+
+//Pipe
+import { DatePipe } from '../pipes/date/date'
+import { ReversePipe } from '../pipes/reverse/reverse'
 
 @NgModule({
   declarations: [
@@ -66,7 +71,9 @@ import { Network } from '@ionic-native/network';
     WaitBidPage,
     WaitDeliverPage,
     FavoritePage,
-    BidNowPage
+    BidNowPage,
+    DatePipe,
+    ReversePipe
   ],
   imports: [
     BrowserModule,
@@ -102,7 +109,7 @@ import { Network } from '@ionic-native/network';
     WaitBidPage,
     WaitDeliverPage,
     FavoritePage,
-    BidNowPage
+    BidNowPage,
   ],
   providers: [
     StatusBar,

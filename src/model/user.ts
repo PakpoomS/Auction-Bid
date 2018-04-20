@@ -19,7 +19,7 @@ export interface Item{
     timeClosed : any; // เวลาปิด
     priceStart: any; // ราคาเปิดประมูล
     priceBid: any; // ราคาประมูลขั้นต่ำ
-    priceEnd : any; // ราคาปิดประมูล
+   // priceEnd : any; // ราคาปิดประมูล
     UID : any; // UID เจ้าของสินค้า
     nameOpen : any; // ชื่อผู้เปิดสินค้า
     winBid : any; 
@@ -28,3 +28,7 @@ export interface Item{
     Delivery : any
 }
 
+export interface Auction{
+    priceBid: any; // ราคาประมูลสินค้า
+    nameOpen : any; // ชื่อผู้ประมูลสินค้า
+}
