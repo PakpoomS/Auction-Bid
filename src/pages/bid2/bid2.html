@@ -35,11 +35,11 @@
 </ion-card>
 <ion-card>
     <strong> Status : </strong> {{(dbServer| async)?.Status}}<br>
-    <strong> ประเภทการ Bid ของสินค้า : </strong> {{(dbServer| async)?.catItem}}<br>
-    <strong> สินค้าเปิดราคาประมูลที่ : </strong> {{(dbServer| async)?.priceStart}} THB <br>
+    <strong> เวลาปิดประมูล : </strong> {{(dbServer| async)?.timeClosed-now | datePipe}}<br>
+    <strong> สินค้าเปิดประมูลที่ : </strong> {{(dbServer| async)?.priceStart}} THB <br>
     <strong> สินค้าราคาปัจจุบัน : </strong> {{(dbServer| async)?.priceStatus}} THB <br>
-    <strong> ผู้ชนะปัจจุบัน : </strong> {{(dbServer| async)?.winBid}}<br>
     <strong> ประมูลขั้นต่ำ : </strong> {{(dbServer| async)?.priceBid}} THB<br>
+    <strong> ผู้ชนะปัจจุบัน : </strong> {{(dbServer| async)?.winBid}}<br>
 </ion-card>
 
 <button ion-button full color ="primary" (click)="favorite()">ตั้งเป็นที่ชื่นชอบ &nbsp; <ion-icon name="thumbs-up"></ion-icon></button>

@@ -35,6 +35,7 @@ export class FavoritePage {
   public dbRef2 = [];
   public uidUser;
   public filed = [];
+  public now;
 
 
   constructor(public navCtrl: NavController, 
@@ -43,7 +44,10 @@ export class FavoritePage {
               public afAuth : AngularFireAuth) {
   }
 
-  ionViewDidLoad() {
+  ionViewDidEnter() {
+    setInterval (()=>{
+      this.now = new Date().getTime();
+    },1000)  
     this.afAuth.authState.subscribe(auth=>{
     this.uidUser = auth.uid
     this.dbRef=[];

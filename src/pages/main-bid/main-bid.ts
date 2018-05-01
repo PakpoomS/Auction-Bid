@@ -43,15 +43,12 @@ export class MainBidPage {
               public afData : AngularFireDatabase,
               public afAuth : AngularFireAuth) {
   }
-  ionViewDidLoad(){
+ionViewDidLoad(){
     this.afAuth.authState.subscribe(auth=>{
       this.uidUser = auth.uid
     }) 
-    this.dbRef=[];
     this.dbServer = this.afData.list('/item')
-    this.afData.list('/item').subscribe((data)=>{
-      this.dbRef = data;
-    });
+   this.ShowData();
     setInterval (()=>{
       this.now = new Date().getTime();
     },1000)  
@@ -62,6 +59,14 @@ export class MainBidPage {
   gotoBid2(item){
     this.navCtrl.push(Bid2Page,{
       item : item
+    });
+  }
+  
+ShowData(){
+    this.dbRef=[];
+    this.afData.list('/item').subscribe((data)=>{
+      this.dbRef = data;
+      console.log(this.dbRef)
     });
   }
 }

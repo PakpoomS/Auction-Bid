@@ -35,6 +35,7 @@ export class Bid2Page {
   public ref
   public check = false ;
   public time;
+  public now;
 
   
   constructor(public navCtrl: NavController, 
@@ -44,6 +45,9 @@ export class Bid2Page {
   }
 
   ionViewDidLoad() {
+    setInterval (()=>{
+      this.now = new Date().getTime();
+    },1000)  
     this.ref = []
     this.afAuth.authState.subscribe(auth=>{
       this.afData.list(`profile/${auth.uid}/favorite`).subscribe((data2)=>{
@@ -80,11 +84,15 @@ export class Bid2Page {
       alert('กรุณาประมูลให้สูงกว่าราคาขั้นต่ำ')
     }else if (this.bid == null){
       alert('กรุณาใส่ราคาที่ท่านต้องการประมูล')
-    }else{
+    }else if(this.time < this.now ){
+      alert('หมดเวลาการประมูล')
+    }
+    else{
       let filed = []; 
       filed.push(this.nameAuth,this.bid);
       this.afData.list(`auction/${this.id.$key}`).push(filed)
       this.afData.object(`item/${this.id.$key}/priceStatus`).set(this.bid);
+      this.afData.object(`item/${this.id.$key}/winBid`).set(this.nameAuth);
       this.time = this.time + 15000;
       this.afData.object(`item/${this.id.$key}/timeClosed`).set(this.time);
       /*this.afData.object(`item/${this.id.$key}/priceStatus`).set(this.bid);
@@ -92,6 +100,7 @@ export class Bid2Page {
       filed.push(this.nameAuth,this.bid)
       this.afData.list(`item/${this.id.$key}/customer`).push(filed)*/
       alert('ประมูลเรียบร้อย')
+      
     }
     /* if(this.dbBid == this.bid || this.dbBid < this.bid){
       this.bidStatus = parseInt(this.priceStatus)+parseInt(this.bid);
