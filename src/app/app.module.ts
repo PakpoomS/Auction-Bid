@@ -50,6 +50,7 @@ import { Network } from '@ionic-native/network';
 //Pipe
 import { DatePipe } from '../pipes/date/date'
 import { ReversePipe } from '../pipes/reverse/reverse'
+import { BidPipe } from '../pipes/bid/bid'
 
 @NgModule({
   declarations: [
@@ -73,7 +74,8 @@ import { ReversePipe } from '../pipes/reverse/reverse'
     FavoritePage,
     BidNowPage,
     DatePipe,
-    ReversePipe
+    ReversePipe,
+    BidPipe
   ],
   imports: [
     BrowserModule,

@@ -33,7 +33,9 @@ export class Bid2Page {
   public nameAuth;
   public dbServerFa;
   public ref
+  public ref2
   public check = false ;
+  public check2 = false;
   public time;
   public now;
 
@@ -48,13 +50,20 @@ export class Bid2Page {
     setInterval (()=>{
       this.now = new Date().getTime();
     },1000)  
-    this.ref = []
+    this.ref = [];
+    this.ref2 =[];
     this.afAuth.authState.subscribe(auth=>{
       this.afData.list(`profile/${auth.uid}/favorite`).subscribe((data2)=>{
         this.ref = data2
         console.log(this.ref)
-      })  
+      }) 
       this.nameAuth = auth.email
+    })
+    this.afAuth.authState.subscribe(auth=>{
+      this.afData.list(`profile/${auth.uid}/bid`).subscribe((data3)=>{
+        this.ref2 = data3
+        console.log(this.ref2)
+      }) 
     })
   this.id = this.navParams.get('item');
   console.log(this.id.$key);
@@ -99,9 +108,25 @@ export class Bid2Page {
       this.afData.object(`item/${this.id.$key}/winBid`).set(this.nameAuth);
       filed.push(this.nameAuth,this.bid)
       this.afData.list(`item/${this.id.$key}/customer`).push(filed)*/
-      alert('ประมูลเรียบร้อย')
-      
+      let i
+    for(i=0 ; i<this.ref2.length ;i++){
+      console.log(this.ref2[i].$value)
+      if(this.ref2[i].$value == this.id.$key){
+        console.log('ซ้ำ')
+        this.check2 = true;
+        break;
+      }
     }
+    console.log(this.check)
+    if(this.check2 == true){
+      alert('ประมูลเรียบร้อย')
+    }else{
+      this.afAuth.authState.subscribe(auth=>{
+      this.afData.list(`profile/${auth.uid}/bid`).push(this.id.$key)
+      })
+      alert('ประมูลเรียบร้อย')
+    }
+  }
     /* if(this.dbBid == this.bid || this.dbBid < this.bid){
       this.bidStatus = parseInt(this.priceStatus)+parseInt(this.bid);
       console.log(this.bidStatus)

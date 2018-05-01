@@ -31,7 +31,6 @@ export class AddItemPage {
   }
 
   ionViewDidLoad() {
-    this.Item.timeOpen = moment().format();
     this.Item.timeClosed = moment().format();
     this.imgA = [];
     this.afAuth.authState.subscribe(auth=>{

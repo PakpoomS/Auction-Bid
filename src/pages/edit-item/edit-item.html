@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar color = "dark">
-    <ion-title>แก้ไขสินค้าที่เปิดประมูล</ion-title>
+    <ion-title>แก้ไขสินค้าของฉัน</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -17,7 +17,7 @@
     
     <ion-card *ngFor="let item of dbServer | async ; let id = index "(click)="gotoEdit2(item)">
     <div *ngIf="this.UID == item.UID">
-      <div *ngIf ="item.Status == 'เปิดการประมูล'">
+      <div *ngIf ="item.Status == 'เปิดประมูล'">
         <div *ngIf ="item.img != null">
         <img src ={{item.img[0]}} height=200 width=200>
         </div>  

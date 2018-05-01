@@ -21,6 +21,7 @@ export class WaitBidPage {
   public test;
   public dbRef;
   public uidUser;
+  public now ;
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
               public afData : AngularFireDatabase,
@@ -28,6 +29,9 @@ export class WaitBidPage {
   }
 
   ionViewDidLoad() {
+    setInterval(()=>{
+      this.now = new Date().getTime();
+    },1000)
     this.afAuth.authState.subscribe(auth=>{
       this.uidUser = auth.uid
     })

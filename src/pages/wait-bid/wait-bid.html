@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar color ="dark">
-    <ion-title>สินค้ารอการประมูล</ion-title>
+    <ion-title>สินค้าเปิดการประมูล</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -16,17 +16,17 @@
 <ion-content padding style="background-color:#396E60;background-size:cover;">
   <ion-card *ngFor="let item of dbServer | async ">
     <div *ngIf="item.UID ==  uidUser">
-    <div *ngIf="item.Status == 'เปิดการประมูล'">
+    <div *ngIf="item.Status == 'เปิดประมูล'">
     <div *ngIf= "item.img != null">
       <img src ={{item.img[0]}} height=200 width=200 imageViewer>
       <ion-card-title>{{item.name}}
       </ion-card-title>
     </div>  
      <ion-card-content><ion-card-header><strong>ชื่อสินค้า : {{item.name}}</strong></ion-card-header>
-       
      ข้อมูลทั่วไปสินค้า : {{item.des}} <br> 
      ราคาประมูลปัจจุบัน : {{item.priceStatus}} THB<br>
      ผู้ชนะปัจจุบัน : {{item.winBid}} <br>
+     {{item.timeClosed - now | datePipe }}<br>
     </ion-card-content>
   </div>
 </div>

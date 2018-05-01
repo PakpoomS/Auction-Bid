@@ -22,6 +22,6 @@ export class DatePipe {
     }else if (value < 0 ){
     return "หมดเวลาการประมูล" 
     }else 
-    return "กำลังโหลดเวลา : กรุณารอซักครู่"
+    return "กำลังโหลดเวลา กรุณารอซักครู่"
   }
 }

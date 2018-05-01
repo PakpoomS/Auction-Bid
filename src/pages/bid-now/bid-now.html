@@ -13,6 +13,24 @@
 </ion-header>
 
 
-<ion-content>
-
+<ion-content padding style="background-color:#396E60;background-size:cover;">
+  <ion-card *ngFor="let item of dbServer | async ; let i = index" (click)="gotoBid2(item)">
+    <div *ngIf="item.UID !=  uidUser">
+    <div *ngIf = "item.$key == filed">
+    <div *ngIf= "item.img != null">
+      <img src ={{item.img[0]}} height=200 width=200 imageViewer>
+      <ion-card-title>{{item.name}}
+      </ion-card-title>
+    </div>  
+     <ion-card-content><ion-card-header><strong>ชื่อสินค้า : {{item.name}}</strong></ion-card-header>
+     สถานะการประมูล : {{item.Status}} <br>
+     ผู้เปิดประมูล : {{item.nameOpen}} <br>
+     ราคาประมูลปัจจุบัน : {{item.priceStatus}} THB<br> 
+     {{item.timeClosed - now | datePipe}} <br>
+     ราคาประมูลปัจจุบัน : {{item.priceStatus}} THB<br>
+     ผู้ชนะปัจจุบัน : {{item.winBid}} <br>
+    </ion-card-content>
+  </div>
+</div>
+</ion-card>
 </ion-content>

@@ -15,7 +15,6 @@ export interface Item{
     name : string; // ชื่อสินค้า
     des : string; // ข้อมูลสินค้า
     sort : string; // ประเภทสินค้า
-    timeOpen : any; // เวลาเปิด
     timeClosed : any; // เวลาปิด
     priceStart: any; // ราคาเปิดประมูล
     priceBid: any; // ราคาประมูลขั้นต่ำ

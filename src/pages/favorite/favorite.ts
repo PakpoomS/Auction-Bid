@@ -45,6 +45,7 @@ export class FavoritePage {
   }
 
   ionViewDidEnter() {
+    this.filed =[];
     setInterval (()=>{
       this.now = new Date().getTime();
     },1000)  

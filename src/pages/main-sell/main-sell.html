@@ -7,23 +7,45 @@
 <ion-header>
 
   <ion-navbar color = "dark"> 
-    <ion-title>ระบบวางประมูลสินค้า</ion-title>
+    <ion-title>จัดการสินค้าของฉัน</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding style="background-color:#396E60;background-size:cover;">
-  <button ion-button full color ="dark" (click)="gotoAdd()">เพิ่มสินค้าการประมูลใหม่</button>
   <br>
-  <button ion-button full color ="dark" (click)="gotoEdit()">แก้ไขสินค้าของฉัน</button>
+  <div>
+       <a style="display:block;" on-click="gotoAdd()">
+         <img src="assets/img/2.1.png" style="display:block;width:100%;height:auto;margin-left:auto;margin-right:auto;" />    
+       </a>
+  </div>
   <br>
-  <button ion-button full color ="dark" (click)="gotoWait()">สินค้ารอการประมูล</button>
-  <br> 
-  <button ion-button full color ="dark" (click)="gotoWaitDeliver()">สินค้าปิดประมูล และ รอการจัดส่ง</button>
-  <br> 
-  <button ion-button full color ="dark" >ประวัติการประมูลสินค้า</button>
-  <br> 
+   
+  <div>
+   <a style="display:block;" on-click="gotoEdit()">
+     <img src="assets/img/2.2.png" style="display:block;width:100%;height:auto;margin-left:auto;margin-right:auto;" />    
+   </a>
+ </div>
+ <br>
+ <div>
+   <a style="display:block;" on-click="gotoWait()">
+     <img src="assets/img/2.3.png" style="display:block;width:100%;height:auto;margin-left:auto;margin-right:auto;" />    
+   </a>
+ </div>
 
+ <br>
+ <div>
+   <a style="display:block;" on-click="gotoWaitDeliver()">
+     <img src="assets/img/2.4.png" style="display:block;width:100%;height:auto;margin-left:auto;margin-right:auto;" />    
+   </a>
+ </div>
+
+ <br>
+ <div>
+   <a style="display:block;">
+     <img src="assets/img/2.5.png" style="display:block;width:100%;height:auto;margin-left:auto;margin-right:auto;" />    
+   </a>
+ </div>
 
 </ion-content>

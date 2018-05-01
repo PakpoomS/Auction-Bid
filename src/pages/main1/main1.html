@@ -22,23 +22,27 @@
    
 
    <ion-item>
-      <ion-label>ยินดีต้อนรับ : {{( profileData | async)?.name}}</ion-label>
+      <ion-label>ยินดีต้อนรับ คุณ {{( profileData | async)?.name}}</ion-label>
     </ion-item>
-  
-    <ion-card class="dev" (click)="gotoBid()">
-        <img src="assets/img/auction.png"/>
-        <div class="card-title">ระบบประมูลสินค้า</div>
-      </ion-card>
+    <br>
+   <div>
+        <a style="display:block;" on-click="gotoBid()">
+          <img src="assets/img/1.png" style="display:block;width:100%;height:auto;margin-left:auto;margin-right:auto;" />    
+        </a>
+   </div>
+   <br>
     
-      <ion-card class="dev" (click)="gotoSell()">
-        <img src="assets/img/tag.png"/>
-        <div class="card-title">ระบบวางประมูลสินค้า</div>
-      </ion-card>
-    
-      <ion-card class="dev" (click)="gotoModify()">
-        <img src="assets/img/manager.png"/>
-        <div class="card-title">แก้ไขข้อมูลส่วนบุคคล</div>
-      </ion-card>
+   <div>
+    <a style="display:block;" on-click="gotoSell()">
+      <img src="assets/img/2.png" style="display:block;width:100%;height:auto;margin-left:auto;margin-right:auto;" />    
+    </a>
+  </div>
+  <br>
+  <div>
+    <a style="display:block;" on-click="gotoModify()">
+      <img src="assets/img/3.png" style="display:block;width:100%;height:auto;margin-left:auto;margin-right:auto;" />    
+    </a>
+  </div>
     
    
 
