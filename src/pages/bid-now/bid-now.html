@@ -16,7 +16,7 @@
 <ion-content padding style="background-color:#396E60;background-size:cover;">
   <ion-card *ngFor="let item of dbServer | async ; let i = index" (click)="gotoBid2(item)">
     <div *ngIf="item.UID !=  uidUser">
-    <div *ngIf = "item.$key == filed">
+    <div *ngIf = "item.$key == item.$key == filed[0] || item.$key == filed[i] || item.$key == filed[i+1] || item.$key == filed[i+2]">
     <div *ngIf= "item.img != null">
       <img src ={{item.img[0]}} height=200 width=200 imageViewer>
       <ion-card-title>{{item.name}}
