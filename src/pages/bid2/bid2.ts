@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angu
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase , FirebaseObjectObservable } from 'angularfire2/database-deprecated';
 import { Item , Auction } from '../../model/user'
+import { FCM } from '@ionic-native/fcm'
 /**
  * Generated class for the Bid2Page page.
  *
@@ -43,7 +44,8 @@ export class Bid2Page {
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
               public afData : AngularFireDatabase,
-              public afAuth : AngularFireAuth) {
+              public afAuth : AngularFireAuth,
+              public fcm : FCM) {
   }
 
   ionViewDidLoad() {
@@ -102,6 +104,9 @@ export class Bid2Page {
       this.afData.list(`auction/${this.id.$key}`).push(filed)
       this.afData.object(`item/${this.id.$key}/priceStatus`).set(this.bid);
       this.afData.object(`item/${this.id.$key}/winBid`).set(this.nameAuth);
+      this.fcm.getToken().then(token=>{
+        this.afData.object(`item/${this.id.$key}/winToken`).set(token); // Token ส่งแจ้งเตือนผู้ใช้
+      })
       this.time = this.time + 15000;
       this.afData.object(`item/${this.id.$key}/timeClosed`).set(this.time);
       /*this.afData.object(`item/${this.id.$key}/priceStatus`).set(this.bid);

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Item } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase, FirebaseObjectObservable } from 'angularfire2/database-deprecated';
 import { Profile } from '../../model/user';
@@ -9,6 +9,7 @@ import { ModifyUserPage } from'../modify-user/modify-user';
 import { MainBidPage } from '../main-bid/main-bid';
 import { MainSellPage } from '../main-sell/main-sell';
 import { TabsPage } from '../tabs/tabs'
+import { FCM } from '@ionic-native/fcm'
 
 
 /**
@@ -30,11 +31,15 @@ export class Main1Page {
 
   profile = {} as Profile;
 
+  public token;
+  public uid;
+
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
     private afAuth : AngularFireAuth,
     private afData : AngularFireDatabase,
-    private toast : ToastController) {
+    private toast : ToastController,
+    private fcm : FCM) {
 }
 
   ionViewDidLoad() {
@@ -45,9 +50,12 @@ export class Main1Page {
           message : `Welcome To Auction-Bid : ${data.email}`,
           duration : 4000
         }).present();
-        
+        this.fcm.getToken().then(token=>{
+          this.token = token;
+          this.uid = data.uid;
+          this.afData.object(`profile/${data.uid}/token`).set(token)
+        })     
     }
-  
       else{
         console.log('error')
       }
@@ -59,6 +67,7 @@ export class Main1Page {
         this.afAuth.auth.signOut();
         this.navCtrl.setRoot(PagePage);
         localStorage.removeItem('token');
+        this.afData.object(`profile/${this.uid}/token`).remove();
       }
   }
 

@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "464150219353",
+    "firebase_url": "https://auction-bid-1a4ec.firebaseio.com",
+    "project_id": "auction-bid-1a4ec",
+    "storage_bucket": "auction-bid-1a4ec.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:464150219353:android:aec5c3538d8780e7",
+        "android_client_info": {
+          "package_name": "ict.sci.psu.auctionbid"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "464150219353-qh89lui0tgj7v85r040ajveonu4gpfnq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJhAFAPSe8Mbw93M_543hdcrrMZFTNCm0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

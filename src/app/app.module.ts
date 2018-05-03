@@ -46,6 +46,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { Camera } from'@ionic-native/camera';
 import { IonicImageViewerModule } from 'ionic-img-viewer';
 import { Network } from '@ionic-native/network';
+import { FCM } from'@ionic-native/fcm';
 
 //Pipe
 import { DatePipe } from '../pipes/date/date'
@@ -118,7 +119,8 @@ import { BidPipe } from '../pipes/bid/bid'
     SplashScreen,
     Camera,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    Network
+    Network,
+    FCM
   ]
 })
 export class AppModule {}
