@@ -50,11 +50,11 @@ export class Main1Page {
           message : `Welcome To Auction-Bid : ${data.email}`,
           duration : 4000
         }).present();
-       /* this.fcm.getToken().then(token=>{
+        this.fcm.getToken().then(token=>{
           this.token = token;
           this.uid = data.uid;
           this.afData.object(`profile/${data.uid}/token`).set(token)
-        })*/     
+        }) 
     }
       else{
         console.log('error')

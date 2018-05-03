@@ -98,7 +98,7 @@ export class BidNowPage {
           })
          })
          console.log(i);
-         this.afData.list(`profile/${this.uidUser}/favorite/${i}`).remove();
+         this.afData.list(`profile/${this.uidUser}/bid/${i}`).remove();
          this.ionViewDidEnter();
         }
       }]
