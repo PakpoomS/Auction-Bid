@@ -39,6 +39,8 @@ export class Bid2Page {
   public check2 = false;
   public time;
   public now;
+  public token;
+  public winUID;
 
   
   constructor(public navCtrl: NavController, 
@@ -55,11 +57,16 @@ export class Bid2Page {
     this.ref = [];
     this.ref2 =[];
     this.afAuth.authState.subscribe(auth=>{
+      this.afData.object(`profile/${auth.uid}/token`).subscribe((data4)=>{
+        this.token = data4.$value;
+        console.log(this.token);
+      }) 
       this.afData.list(`profile/${auth.uid}/favorite`).subscribe((data2)=>{
         this.ref = data2
         console.log(this.ref)
       }) 
       this.nameAuth = auth.email
+      this.winUID = auth.uid;
     })
     this.afAuth.authState.subscribe(auth=>{
       this.afData.list(`profile/${auth.uid}/bid`).subscribe((data3)=>{
@@ -67,6 +74,7 @@ export class Bid2Page {
         console.log(this.ref2)
       }) 
     })
+  
   this.id = this.navParams.get('item');
   console.log(this.id.$key);
   this.dbServer = this.afData.object(`item/${this.id.$key}`)
@@ -83,7 +91,6 @@ export class Bid2Page {
   this.img2 = this.dbServer2.Img;
   this.dbServer3 = this.afData.list(`auction/${this.id.$key}`)
   console.log(this.dbBid)
-  
   }
   Bid(){
     let y = this.priceStatus + this.dbBid
@@ -104,9 +111,8 @@ export class Bid2Page {
       this.afData.list(`auction/${this.id.$key}`).push(filed)
       this.afData.object(`item/${this.id.$key}/priceStatus`).set(this.bid);
       this.afData.object(`item/${this.id.$key}/winBid`).set(this.nameAuth);
-      this.fcm.getToken().then(token=>{
-        this.afData.object(`item/${this.id.$key}/winToken`).set(token); // Token ส่งแจ้งเตือนผู้ใช้
-      })
+      this.afData.object(`item/${this.id.$key}/winToken`).set(this.token); // Token ส่งแจ้งเตือนผู้ใช้
+      this.afData.object(`item/${this.id.$key}/winUID`).set(this.winUID);
       this.time = this.time + 15000;
       this.afData.object(`item/${this.id.$key}/timeClosed`).set(this.time);
       /*this.afData.object(`item/${this.id.$key}/priceStatus`).set(this.bid);

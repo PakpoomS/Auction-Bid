@@ -21,6 +21,8 @@ export class EditItem2Page {
   public dbServer;
   public dbServer2;
   public dbImg;
+  public now ;
+  public time; 
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
               public afData : AngularFireDatabase,
@@ -29,6 +31,9 @@ export class EditItem2Page {
   }
 
   ionViewDidLoad() {
+    setInterval (()=>{
+      this.now = new Date().getTime();
+    },1000)
     this.dbImg = [];
     this.item = this.navParams.get('item')
     this.dbServer = this.afData.object(`item/${this.item.$key}`)
@@ -36,6 +41,9 @@ export class EditItem2Page {
     this.dbImg = this.item.img;
     console.log(this.dbServer2);
     console.log('ionViewDidLoad EditItem2Page');
+    this.dbServer.subscribe((data)=>{
+      this.time = data.timeClosed
+    })
   }
 
   takePhoto(){
@@ -106,7 +114,8 @@ export class EditItem2Page {
     let alertMe = this
     .alertCtrl
     .create({
-      title : 'คุณต้องการลบข้อมูลนี้ใช่หรือไม่ ? ',
+      title : 'คุณต้องการลบการประมูลนี้ใช่หรือไม่ ? ',
+      message : 'เมื่อเวลาการปิดประมูลน้อยกว่า 1 ชั่วโมง จะไม่สามารถลบสินค้าได้',
       buttons:[
         {
           text : 'ยกเลิก',
@@ -116,6 +125,11 @@ export class EditItem2Page {
         },{
           text : 'ตกลง',
           handler:() =>{
+            let i = this.time;
+            let y = this.now - 3600;
+            if(y > i){
+              alert('ไม่สามารถลบได้ เพราะเหลือเวลา ต่ำกว่า 1 ชั่วโมง ');
+            }else
             this.dbServer.remove();
             this.navCtrl.pop();
           }

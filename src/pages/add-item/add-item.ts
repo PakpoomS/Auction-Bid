@@ -90,6 +90,7 @@ export class AddItemPage {
        this.Item.UID = auth.uid;
        this.Item.priceStatus = this.Item.priceStart;
        this.Item.Status = 'เปิดประมูล';
+       this.Item.Delivery = 'รอการชำระเงิน';
        this.afData.list('/item/').push(this.Item).ref.child('/img').set(this.imgA)
        alert('บันทึกข้อมูลเรียบร้อย')
        this.navCtrl.pop();

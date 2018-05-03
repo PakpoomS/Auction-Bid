@@ -37,6 +37,7 @@ import { WaitBidPage } from '../pages/wait-bid/wait-bid';
 import { WaitDeliverPage } from '../pages/wait-deliver/wait-deliver';
 import { FavoritePage } from '../pages/favorite/favorite'
 import { BidNowPage } from '../pages/bid-now/bid-now'
+import { WaitDeliver2Page } from '../pages/wait-deliver2/wait-deliver2'
 
 
 
@@ -76,7 +77,8 @@ import { BidPipe } from '../pipes/bid/bid'
     BidNowPage,
     DatePipe,
     ReversePipe,
-    BidPipe
+    BidPipe,
+    WaitDeliver2Page
   ],
   imports: [
     BrowserModule,
@@ -113,6 +115,7 @@ import { BidPipe } from '../pipes/bid/bid'
     WaitDeliverPage,
     FavoritePage,
     BidNowPage,
+    WaitDeliver2Page
   ],
   providers: [
     StatusBar,

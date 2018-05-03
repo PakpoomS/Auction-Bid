@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AngularFireDatabase , FirebaseObjectObservable } from 'angularfire2/database-deprecated';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { WaitDeliver2Page } from '../wait-deliver2/wait-deliver2';
 /**
  * Generated class for the WaitDeliverPage page.
  *
@@ -36,5 +37,9 @@ export class WaitDeliverPage {
       this.dbRef = data;
     });
   }
-
+  goTodel(item){
+    this.navCtrl.push(WaitDeliver2Page,{
+      item : item
+    });
+  }
 }

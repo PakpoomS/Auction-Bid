@@ -14,7 +14,7 @@
 
 
 <ion-content padding style="background-color:#396E60;background-size:cover;">
-  <ion-card *ngFor="let item of dbServer | async ">
+  <ion-card *ngFor="let item of dbServer | async " (click)="goTodel(item)">
         <div *ngIf="item.UID ==  uidUser">
         <div *ngIf="item.Status == 'ปิดการประมูล'">
         <div *ngIf= "item.img != null">
@@ -27,7 +27,7 @@
          ข้อมูลทั่วไปสินค้า : {{item.des}} <br> 
          ราคาประมูลปัจจุบัน : {{item.priceStatus}} THB<br>
          ผู้ชนะปัจจุบัน : {{item.winBid}} <br><br>
-         สถานะการจัดส่ง : {{item.Delivery}}
+         สถานะการดำเนินการ : {{item.Delivery}}
          <br>
         </ion-card-content>
       </div>

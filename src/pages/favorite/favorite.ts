@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams , Grid, Tabs} from 'ionic-angular';
+import { IonicPage, NavController, NavParams , Grid, Tabs, AlertController} from 'ionic-angular';
 
 import { AngularFireDatabase , FirebaseObjectObservable } from 'angularfire2/database-deprecated';
 import { AngularFireAuth } from 'angularfire2/auth';
@@ -10,6 +10,8 @@ import { Item } from "../../model/user";
 import { Bid2Page } from '../bid2/bid2'
 import { Main1Page } from '../main1/main1';
 import {TabsPage} from '../tabs/tabs'
+import { auth } from 'firebase';
+import { forEach } from '@firebase/util';
 
 /**
 /**
@@ -41,7 +43,8 @@ export class FavoritePage {
   constructor(public navCtrl: NavController, 
               public navParams: NavParams,
               public afData : AngularFireDatabase,
-              public afAuth : AngularFireAuth) {
+              public afAuth : AngularFireAuth,
+              private alertCtrl : AlertController) {
   }
 
   ionViewDidEnter() {
@@ -75,5 +78,38 @@ export class FavoritePage {
       item : item
     });
   }
+  Delete(item , item2){
+    let confirm = this 
+    .alertCtrl
+    .create({
+      title : 'คุณต้องการลบ สินค้า '+ item2,
+      message : 'ออกจาก ที่ชื่นชอบ ?',
+      buttons :[{
+        text : 'ยกเลิก',
+        handler : () =>{
+
+        }
+      },{
+        text : 'ตกลง',
+        handler: () =>{
+          let i ;
+          console.log(item)
+          this.dbServer2.subscribe((data)=>{
+           data.forEach(function (value){
+            if(value.$value == item){
+              i = value.$key;
+            }
+          })
+         })
+         console.log(i);
+         this.afData.list(`profile/${this.uidUser}/favorite/${i}`).remove();
+         this.ionViewDidEnter();
+        }
+      }]
+    });
+    confirm.present();
+   
+  }
+
 
 }
