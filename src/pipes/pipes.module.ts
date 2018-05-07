@@ -2,14 +2,19 @@ import { NgModule } from '@angular/core';
 import { DatePipe } from './date/date';
 import { ReversePipe } from './reverse/reverse';
 import { BidPipe } from './bid/bid';
+import { TimePipe } from './time/time';
 
 @NgModule({
 	declarations: [DatePipe,
     ReversePipe,
-    BidPipe],
-	imports: [],
+    BidPipe,
+    TimePipe],
+	imports: [
+        
+    ],
 	exports: [DatePipe,
     ReversePipe,
-    BidPipe]
+    BidPipe,
+    TimePipe]
 })
 export class PipesModule {}

@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { IonicPage, NavController, NavParams, AlertController , Slides } from 'ionic-angular';
 import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFireDatabase , FirebaseObjectObservable } from 'angularfire2/database-deprecated';
 import { Item , Auction } from '../../model/user'
@@ -17,6 +17,9 @@ import { FCM } from '@ionic-native/fcm'
   templateUrl: 'bid2.html',
 })
 export class Bid2Page {
+
+  @ViewChild('slider') slider: Slides;
+
   public id;
   item = {} as Item
   public dbBid;
@@ -107,7 +110,7 @@ export class Bid2Page {
     }
     else{
       let filed = []; 
-      filed.push(this.nameAuth,this.bid);
+      filed.push(this.nameAuth,this.bid,this.now);
       this.afData.list(`auction/${this.id.$key}`).push(filed)
       this.afData.object(`item/${this.id.$key}/priceStatus`).set(this.bid);
       this.afData.object(`item/${this.id.$key}/winBid`).set(this.nameAuth);
@@ -189,4 +192,19 @@ export class Bid2Page {
   BackHome(){
     this.navCtrl.pop()
   }
+
+  currentIndex = 0;
+
+  nextSlide() {
+    this.slider.slideNext();
+  }
+
+  previousSlide() {
+    this.slider.slidePrev();
+  }
+
+  onSlideChanged() {
+    this.currentIndex = this.slider.getActiveIndex();
+  }
+  
 }

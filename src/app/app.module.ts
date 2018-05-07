@@ -53,6 +53,7 @@ import { FCM } from'@ionic-native/fcm';
 import { DatePipe } from '../pipes/date/date'
 import { ReversePipe } from '../pipes/reverse/reverse'
 import { BidPipe } from '../pipes/bid/bid'
+import { TimePipe } from '../pipes/time/time'
 
 @NgModule({
   declarations: [
@@ -78,7 +79,8 @@ import { BidPipe } from '../pipes/bid/bid'
     DatePipe,
     ReversePipe,
     BidPipe,
-    WaitDeliver2Page
+    WaitDeliver2Page,
+    TimePipe
   ],
   imports: [
     BrowserModule,
