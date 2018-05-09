@@ -14,23 +14,19 @@
 
 
 <ion-content padding style="background-color:#396E60;background-size:cover;">
-    <ion-card *ngFor="let item of dbServer | async ;">
+    <div *ngFor="let item of dbServer | async ;" (click)="gotoBid2(item)">
     <div *ngIf="item.UID !=  uidUser">
       <div *ngIf ="item.winBid == emailUser">
         <div *ngIf="item.Status == 'ปิดการประมูล'">
-        <div *ngIf= "item.img != null">
-          <img src ={{item.img[0]}} height=200 width=200 imageViewer>
-        </div>  
-         <ion-card-content><ion-card-header><strong>ชื่อสินค้า : {{item.name}}</strong></ion-card-header>
-          
-         ข้อมูลทั่วไปสินค้า : {{item.des}} <br>
-         เจ้าของสินค้า : {{item.nameOpen}} <br> 
-         ราคาที่ชนะการประมูล : {{item.priceStatus}} THB<br>
-         ผู้ชนะการประมูล: {{item.winBid}} <br>
-         สถานะการจัดส่ง : {{item.Delivery}} <br>
-        </ion-card-content>
+          <ion-item>
+          <ion-icon item-right name="ios-arrow-forward-outline"></ion-icon> 
+            <p style="color:black">ชื่อสินค้า : {{item.name}}<br>
+          สถานะการประมูล : {{item.Status}} <br>
+          ราคาประมูลปัจจุบัน : {{item.priceStatus}} THB<br>
+          ผู้ชนะการประมูล : คุณคือผู้ชนะการประมูล <br></p>
+        </ion-item>
       </div>
     </div>
     </div>
-  </ion-card>
+  </div>
 </ion-content>

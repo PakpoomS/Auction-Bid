@@ -16,18 +16,21 @@
 </ion-header>
 
 <ion-content padding style="background-color:#396E60;background-size:cover;">
-  <ion-list>    
-  <ion-item *ngFor="let item of dbServer | async ;" (click)="gotoBid2(item)">
+  <ion-list>  
+    <div *ngFor="let item of dbServer | async ;" (click)="gotoBid2(item)" >
       <div *ngIf="item.UID !=  uidUser">
       <div *ngIf = "item.Status == 'เปิดประมูล'">
+      <ion-item>
+      <ion-icon item-right name="ios-arrow-forward-outline"></ion-icon> 
       <p style="color:black">ชื่อสินค้า : {{item.name}}<br>
        สถานะการประมูล : {{item.Status}} <br>
-       ผู้เปิดประมูล : {{item.nameOpen}} <br> 
        ราคาประมูลปัจจุบัน : {{item.priceStatus}} THB<br></p>
-       <p style="color:red;font-size:70%;font-family:verdana;">{{item.timeClosed - now | datePipe }}<br></p>
+       <p style="color:red;font-size:100%;font-family:verdana;background-color: yellow;text-align: center;">{{item.timeClosed - now | datePipe }}<br></p>
+      </ion-item>
     </div>
   </div>
-</ion-item>
-</ion-list>
+</div>
+ 
+  </ion-list>
 
 </ion-content>

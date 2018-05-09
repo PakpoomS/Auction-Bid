@@ -21,15 +21,17 @@
 <ion-grid>
     <ion-row>
         <ion-col>
-                    <ion-item>
-   <p style="color:black;"><strong> ชื่อ : </strong> {{(dbServer| async)?.name}} <br>
+                    <ion-item color = co2>
+   <p style="color:black;text-align: center;"><strong> ชื่อ : </strong> {{(dbServer| async)?.name}} <br>
     <strong> ประเภทสินค้า : </strong> {{(dbServer| async)?.sort}} <br> </p>
     
                      </ion-item>
         </ion-col>
+        <div *ngIf="this.winUID !== (dbServer | async)?.UID">
         <ion-col col-4>
                 <button ion-button color ="primary" (click)="favorite()">ชื่นชอบ &nbsp; <ion-icon name="thumbs-up"></ion-icon></button>
         </ion-col>
+    </div>
 </ion-row>
 <div *ngIf = "img != null" >          
 <ion-slides #slider effect="fade" (ionSlideWillChange)="onSlideChanged()">
@@ -46,23 +48,24 @@
                     (click)="nextSlide()"></div>
              </ion-slides>
 </div> 
-<ion-list class="White">
-    <p style="text-align: center;"><strong>ข้อมูลทั่วไปสินค้า</strong></p>
-    <p style="text-align: center;">{{(dbServer| async)?.des}}<br></p>
+<ion-list class = "White">
+    <p style="text-align: center;color:black;"><strong>ข้อมูลทั่วไปสินค้า</strong></p>
+    <p style="text-align: center;color:black;">{{(dbServer| async)?.des}}<br></p>
 </ion-list>
 
-<ion-item>
-        <p style="text-align: center;color:black;"><strong>ข้อมูลการประมูลสินค้า</strong><br></p>
+<ion-item color = co2>
+        <p style="text-align: center;color:black"><strong>ข้อมูลการประมูลสินค้า</strong><br>
         <strong>สถานะสินค้า :  {{(dbServer| async)?.Status}}</strong><br>
         <strong>ผู้ชนะปัจจุบัน : {{(dbServer| async)?.winBid}}</strong><br>
         <strong> สินค้าเปิดประมูลที่ : </strong> {{(dbServer| async)?.priceStart}} THB <br>
         <strong> สินค้าราคาปัจจุบัน : </strong> {{(dbServer| async)?.priceStatus}} THB <br>
-        <strong> ประมูลขั้นต่ำ : </strong> {{(dbServer| async)?.priceBid}} THB<br>
+        <strong> ประมูลขั้นต่ำ : </strong> {{(dbServer| async)?.priceBid}} THB<br></p>
 </ion-item>
 
-<ion-item>
-        <strong> <p style="color:red;font-family:verdana;font-size:70%;text-align: center;"> {{(dbServer| async)?.timeClosed-now | datePipe}} </p></strong>
+<ion-item color = co1>
+        <strong> <p style="color:red;font-family:Times New Roman;font-size:120%;text-align: center;"> {{(dbServer| async)?.timeClosed-now | datePipe}} </p></strong>
 </ion-item>
+<div *ngIf="this.winUID !== (dbServer | async)?.UID">
 <ion-grid>
     <ion-row>
         <ion-col col-8>
@@ -85,18 +88,21 @@
       <ion-label range-right><ion-icon name="warning"></ion-icon></ion-label>
     </ion-range>
   </ion-item>
+</div>
+
 <br>
 <br>
 <ion-list class="White">
     <ion-card-header><strong>รายชื่อผู้เข้าร่วมประมูลล่าสุด</strong></ion-card-header>
-    <div *ngFor="let item of dbServer3  | async | reverse ; let i = index ; let last = last;">
-        <p style="font-size:80%;">ผู้ประมูลอันดับที่ {{i+1}} : {{item[0]}}<br>
+    <ion-item color = co2 *ngFor="let item of dbServer3  | async  ; let i = index ; let last = last;">
+        <p style="font-size:80%;color:black">ผู้ประมูลคนที่ {{i+1}} : {{item[0]}}<br>
         ราคาประมูล : {{item[1]}}<br>
         {{item[2] | time}}<br>
         </p>
-    </div>
+    </ion-item>
 </ion-list>
 <br>
+<div *ngIf="this.winUID !== (dbServer | async)?.UID">
 <ion-card>
     <div *ngIf = "(dbServer2 | async)?.Img ">
     <img [src] = "(dbServer2 | async)?.Img" height=200 width=200 imageViewer>
@@ -105,6 +111,7 @@
     <strong> ผู้ขาย : </strong> {{(dbServer| async)?.nameOpen}}  <br>
     <strong>  เบอร์โทรศัพท์ผู้ขาย : </strong> {{(dbServer2| async)?.phone}} <br>
 </ion-card>
+</div>
 </ion-grid>
 </ion-content>
 

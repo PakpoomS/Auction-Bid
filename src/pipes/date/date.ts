@@ -18,7 +18,7 @@ export class DatePipe {
     var minutes = Math.floor((value % (1000 * 60 * 60)) / (1000 * 60));
     var seconds = Math.floor((value  % (1000 * 60)) / 1000);
     if(value > 0){
-    return "ปิดประมูลอีก : " + days + " วัน " + hours + " ชั่วโมง " + minutes + " นาที " + seconds + " วินาที "
+    return " ปิดประมูล : " + days + " D " + hours + " H " + minutes + " M " + seconds + " S "
     }else if (value < 0 ){
     return "หมดเวลาการประมูล" 
     }else 

@@ -14,21 +14,21 @@
 
 
 <ion-content padding style="background-color:#396E60;background-size:cover;">
-    <ion-card *ngFor="let item of dbServer | async ; let i = index" ><ion-icon class = "right" color = "danger" name="trash" icon (click)="Delete(item.$key , item.name)"></ion-icon> 
+    <div *ngFor="let item of dbServer | async ; let i = index" >
+        <ion-list>
         <div *ngIf="item.UID !=  uidUser">  
         <div *ngIf = "filed.indexOf(item.$key) !== -1" (click)="gotoBid2(item)">
-        <div *ngIf= "item.img != null">
-          <img src ={{item.img[0]}} height=200 width=200 imageViewer>
-        </div>
-         <ion-card-content><ion-card-header><strong>ชื่อสินค้า : {{item.name}}</strong></ion-card-header>
-         สถานะการประมูล : {{item.Status}} <br>
-         ผู้เปิดประมูล : {{item.nameOpen}} <br>
-         ราคาประมูลปัจจุบัน : {{item.priceStatus}} THB<br> 
-         {{item.timeClosed - now | datePipe}} <br>
-         ราคาประมูลปัจจุบัน : {{item.priceStatus}} THB<br>
-         ผู้ชนะปัจจุบัน : {{item.winBid}} <br>
-        </ion-card-content>
+        <ion-item>
+        <ion-icon item-right name="ios-arrow-forward-outline"></ion-icon> 
+        <ion-icon item-left color = "danger" name="trash" icon (click)="Delete(item.$key , item.name)"></ion-icon> 
+        <p style="color:black">ชื่อสินค้า : {{item.name}}<br>
+          สถานะการประมูล : {{item.Status}} <br>
+          ราคาประมูลปัจจุบัน : {{item.priceStatus}} THB<br></p>
+          <p style="color:red;font-size:80%;font-family:verdana;background-color: yellow;text-align: center;">{{item.timeClosed - now | datePipe }}<br></p>
+         </ion-item>
+        
       </div>
     </div>
-   </ion-card>
+  </ion-list>
+    </div>
 </ion-content>

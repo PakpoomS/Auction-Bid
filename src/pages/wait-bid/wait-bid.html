@@ -14,9 +14,8 @@
 
 
 <ion-content padding style="background-color:#396E60;background-size:cover;">
-  <ion-card *ngFor="let item of dbServer | async ">
+  <ion-card *ngFor="let item of dbServer | async " (click)="gotoBid2(item)">
     <div *ngIf="item.UID ==  uidUser">
-    <div *ngIf="item.Status == 'เปิดประมูล'">
     <div *ngIf= "item.img != null">
       <img src ={{item.img[0]}} height=200 width=200 imageViewer>
       <ion-card-title>{{item.name}}
@@ -29,6 +28,5 @@
      {{item.timeClosed - now | datePipe }}<br>
     </ion-card-content>
   </div>
-</div>
    </ion-card>
 </ion-content>

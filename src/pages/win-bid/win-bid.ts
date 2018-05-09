@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AngularFireDatabase , FirebaseObjectObservable } from 'angularfire2/database-deprecated';
 import { AngularFireAuth } from 'angularfire2/auth';
+import { Bid2Page } from '../bid2/bid2';
 /**
  * Generated class for the WinBidPage page.
  *
@@ -33,6 +34,10 @@ export class WinBidPage {
     this.dbServer = this.afData.list('/item')
 
   }
-  
+  gotoBid2(item){
+    this.navCtrl.push(Bid2Page,{
+      item : item
+    });
+  }
 
 }

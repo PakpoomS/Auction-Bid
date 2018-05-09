@@ -44,6 +44,8 @@ export class Bid2Page {
   public now;
   public token;
   public winUID;
+  public winCheck
+  public UID;
 
   
   constructor(public navCtrl: NavController, 
@@ -69,6 +71,7 @@ export class Bid2Page {
         console.log(this.ref)
       }) 
       this.nameAuth = auth.email
+      console.log(auth.uid);
       this.winUID = auth.uid;
     })
     this.afAuth.authState.subscribe(auth=>{
@@ -88,6 +91,7 @@ export class Bid2Page {
     this.dbBid = parseInt(data.priceBid)*1;
     this.priceStatus = parseInt(data.priceStatus)*1;
     this.time = data.timeClosed;
+    this.winCheck = data.winBid;
   })
   this.item.name = this.id.name;
   this.img = this.id.img ;
@@ -107,6 +111,8 @@ export class Bid2Page {
       alert('กรุณาใส่ราคาที่ท่านต้องการประมูล')
     }else if(this.time < this.now ){
       alert('หมดเวลาการประมูล')
+    }else if (this.nameAuth == this.winCheck){
+      alert('ท่านเป็นผู้ชนะการประมูลอยู่แล้วในปัจจุบัน')
     }
     else{
       let filed = []; 
