@@ -10,12 +10,7 @@ import { AngularFireDatabaseModule, } from 'angularfire2/database-deprecated';
 
 
 var config = {
-  apiKey: "AIzaSyDOS9kv6bD3ZGx0o51t1Z56ocIEwG0e8YQ",
-  authDomain: "auction-bid-1a4ec.firebaseapp.com",
-  databaseURL: "https://auction-bid-1a4ec.firebaseio.com",
-  projectId: "auction-bid-1a4ec",
-  storageBucket: "auction-bid-1a4ec.appspot.com",
-  messagingSenderId: "464150219353"
+//apikey
 };
 
 //Page
